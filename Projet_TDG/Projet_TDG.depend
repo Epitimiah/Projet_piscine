@@ -1,0 +1,18 @@
+# depslib dependency file v1.0
+1522839102 source:c:\users\paul bazin\desktop\projet_tdg\graphe.cpp
+
+1522847749 source:c:\users\paul bazin\desktop\projet_tdg\main.cpp
+	<iostream>
+
+1522847839 source:c:\users\paul bazin\desktop\projet_tdg\sommet.cpp
+	"Sommet.h"
+
+1522839433 source:c:\users\paul bazin\desktop\projet_tdg\arete.cpp
+	"Arete.h"
+
+1522847696 c:\users\paul bazin\desktop\projet_tdg\arete.h
+
+1522847816 c:\users\paul bazin\desktop\projet_tdg\sommet.h
+	<allegro.h>
+	<string>
+
