@@ -16,3 +16,69 @@
 	<allegro.h>
 	<string>
 
+1522863145 source:c:\users\gaultier\documents\github\projet_piscine\projet_tdg\arete.cpp
+	"Arete.h"
+
+1522863133 c:\users\gaultier\documents\github\projet_piscine\projet_tdg\arete.h
+	"Sommet.h"
+
+1522862867 source:c:\users\gaultier\documents\github\projet_piscine\projet_tdg\sommet.cpp
+	"Sommet.h"
+
+1522865959 c:\users\gaultier\documents\github\projet_piscine\projet_tdg\sommet.h
+	<allegro.h>
+	<string>
+
+1522865959 source:c:\users\gaultier\documents\github\projet_piscine\projet_tdg\main.cpp
+	<iostream>
+	<stdio.h>
+	<cstdlib>
+	<stdlib.h>
+	"Graphe.h"
+
+1522865466 c:\users\gaultier\documents\github\projet_piscine\projet_tdg\graphe.h
+	<vector>
+	<iostream>
+	<cstdlib>
+	<fstream>
+	<stack>
+	<stdlib.h>
+	"Arete.h"
+	"Sommet.h"
+
+1522862753 source:c:\users\gaultier\documents\github\projet_piscine\projet_tdg\graphe.cpp
+	"Graphe.h"
+
+1114367174 c:\users\gaultier\documents\github\projet_piscine\projet_tdg\allegro.h
+	"allegro/base.h"
+	"allegro/system.h"
+	"allegro/debug.h"
+	"allegro/unicode.h"
+	"allegro/mouse.h"
+	"allegro/timer.h"
+	"allegro/keyboard.h"
+	"allegro/joystick.h"
+	"allegro/palette.h"
+	"allegro/gfx.h"
+	"allegro/color.h"
+	"allegro/draw.h"
+	"allegro/rle.h"
+	"allegro/compiled.h"
+	"allegro/text.h"
+	"allegro/font.h"
+	"allegro/fli.h"
+	"allegro/config.h"
+	"allegro/gui.h"
+	"allegro/sound.h"
+	"allegro/file.h"
+	"allegro/lzss.h"
+	"allegro/datafile.h"
+	"allegro/fixed.h"
+	"allegro/fmaths.h"
+	"allegro/matrix.h"
+	"allegro/quat.h"
+	"allegro/3d.h"
+	"allegro/3dmaths.h"
+	"allegro/alcompat.h"
+	"allegro/fix.h"
+
