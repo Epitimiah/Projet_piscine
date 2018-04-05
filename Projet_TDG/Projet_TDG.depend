@@ -82,3 +82,36 @@
 	"allegro/alcompat.h"
 	"allegro/fix.h"
 
+1522938108 source:c:\users\gault\documents\github\projet_piscine\projet_tdg\arete.cpp
+	"Arete.h"
+
+1522938115 c:\users\gault\documents\github\projet_piscine\projet_tdg\arete.h
+	"Sommet.h"
+
+1522937598 c:\users\gault\documents\github\projet_piscine\projet_tdg\sommet.h
+	<allegro.h>
+	<string>
+
+1522938471 source:c:\users\gault\documents\github\projet_piscine\projet_tdg\graphe.cpp
+	"Graphe.h"
+
+1522936458 c:\users\gault\documents\github\projet_piscine\projet_tdg\graphe.h
+	<vector>
+	<iostream>
+	<cstdlib>
+	<fstream>
+	<stack>
+	<stdlib.h>
+	"Arete.h"
+	"Sommet.h"
+
+1522938513 source:c:\users\gault\documents\github\projet_piscine\projet_tdg\main.cpp
+	<iostream>
+	<stdio.h>
+	<cstdlib>
+	<stdlib.h>
+	"Graphe.h"
+
+1522928044 source:c:\users\gault\documents\github\projet_piscine\projet_tdg\sommet.cpp
+	"Sommet.h"
+

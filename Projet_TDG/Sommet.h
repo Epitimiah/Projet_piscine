@@ -6,6 +6,7 @@
 
 class Sommet
 {
+    friend class Graphe;
 private :
     std::string m_nom;
     BITMAP * m_image;
@@ -17,6 +18,23 @@ public :
     Sommet(std::string nom);
     Sommet(std::string nom, int nombre_arete, int position_x=0, int position_y=0);
     ~Sommet();
+
+    //Getters et Setters
+    std::string getNom() { return m_nom; }
+    void setNom(std::string nom) { m_nom = nom; }
+
+    BITMAP* getImage() { return m_image; }
+    void setImage(BITMAP* image) { m_image = image; }
+
+    int getNb_arete() { return m_nbr_arete; }
+    void setNb_arete(int nombre_arete) { m_nbr_arete = nombre_arete; }
+
+    int getPos_x() { return m_pos_x; }
+    void setPos_x(int position_x) { m_pos_x = position_x; }
+
+    int getPos_y() { return m_pos_y; }
+    void setPos_y(int position_y) { m_pos_y = position_y; }
+
 };
 
 #endif // SOMMET_H_INCLUDED

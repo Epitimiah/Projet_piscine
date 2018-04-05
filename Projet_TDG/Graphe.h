@@ -23,6 +23,8 @@ public :
     ~Graphe();
 
     int LoadFile(std::string namefile);
+    int SaveFile(std::string namefile);
+    void DisplayChaine();
 };
 
 

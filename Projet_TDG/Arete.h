@@ -5,6 +5,7 @@
 
 class Arete
 {
+    friend class Graphe;
 private :
     Sommet m_sommet_d;
     Sommet m_sommet_a;
