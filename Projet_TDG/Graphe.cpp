@@ -14,7 +14,7 @@ int Graphe::LoadFile(std::string namefile)
     bool done = false;
     std::stack<int> nbaretes;
     std::string data1, data2, data3, data4;
-    int ent1, ent2, ent3, ent4;
+    int ent1, ent2, ent3;
     int forder;
     std::ifstream file(namefile, std::ios::in);
     ///Le if verifie si le fichier a pu être ouvert.
@@ -48,10 +48,12 @@ int Graphe::LoadFile(std::string namefile)
             for(int j = 0; j < nbaretes.top() ; j++)
             {
                 getline(file, data1);
+                ent1 = atoi(data1.c_str());
                 getline(file, data2);
+                ent2 = atoi(data2.c_str());
                 getline(file, data3);
-                ent4 = atoi(data3.c_str());
-                m_arete.push_back(Arete(Sommet(data1), Sommet(data2), ent4));
+                ent3 = atoi(data3.c_str());
+                m_arete.push_back(Arete(ent1, ent2, ent3));
             }
             nbaretes.pop();
         }
@@ -86,12 +88,8 @@ void Graphe::DisplayChaine()
     ///Ici je parcours le vecteur d'arete du graph et j'affiche le nom des influenceurs ainsi que de leurs influencés
     for(auto elem : m_arete)
     {
-        std::cout << elem.m_sommet_a.m_nom << " de position : " << elem.m_sommet_a.getPos_x() << " " << elem.m_sommet_a.getPos_y() << " est le pantin de :" << std::endl;
-        std::cout << elem.m_sommet_d.m_nom << " de position : " << elem.m_sommet_d.getPos_x() << " " << elem.m_sommet_d.getPos_y() << std::endl;
-        std::cout << " Cette liaison est de poids : " << elem.m_poids << std::endl;
-    }
-    for(auto elem : m_arete)
-    {
-        std::cout << elem.m_sommet_a.m_pos_x << std::endl;
+        std::cout << elem.m_sommet_d << " de position : " << m_sommet[elem.m_sommet_d-1].m_pos_x << " " << m_sommet[elem.m_sommet_d-1].m_pos_y << " est un sommet oriente vers : "<< std::endl;
+        std::cout << elem.m_sommet_a << " de position : " << m_sommet[elem.m_sommet_a-1].m_pos_x << " " << m_sommet[elem.m_sommet_a-1].m_pos_y << std::endl;
+        std::cout << " Cette liaison est de poids : " << elem.m_poids << std::endl << std::endl;
     }
 }

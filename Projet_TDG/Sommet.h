@@ -16,7 +16,7 @@ private :
 public :
     Sommet();
     Sommet(std::string nom);
-    Sommet(std::string nom, int nombre_arete, int position_x=0, int position_y=0);
+    Sommet(std::string nom, int nombre_arete, int position_x = 0, int position_y = 0);
     ~Sommet();
 
     //Getters et Setters
