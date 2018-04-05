@@ -16,3 +16,21 @@
 	<allegro.h>
 	<string>
 
+1522919812 source:d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\arete.cpp
+	"Arete.h"
+
+1522919810 d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\arete.h
+	"Sommet.h"
+
+1522859754 d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\sommet.h
+	<allegro.h>
+	<string>
+
+1522850447 source:d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\graphe.cpp
+	"Graphe.h"
+
+1522856155 d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\graphe.h
+	"Arete.h"
+	"Sommet.h"
+	<vector>
+
