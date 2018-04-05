@@ -4,11 +4,14 @@
 #include <allegro.h>
 #include <string>
 
+#include <iostream>
+
 class Sommet
 {
     friend class Graphe;
 private :
     std::string m_nom;
+    std::string m_nom_image;
     BITMAP * m_image;
     int m_nbr_arete;
     int m_pos_x;
@@ -16,7 +19,7 @@ private :
 public :
     Sommet();
     Sommet(std::string nom);
-    Sommet(std::string nom, int nombre_arete, int position_x = 0, int position_y = 0);
+    Sommet(std::string nom, std::string nom_image, int nombre_arete, int position_x = 0, int position_y = 0);
     ~Sommet();
 
     //Getters et Setters

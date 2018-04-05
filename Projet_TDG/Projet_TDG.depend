@@ -88,11 +88,12 @@
 1522948118 c:\users\gault\documents\github\projet_piscine\projet_tdg\arete.h
 	"Sommet.h"
 
-1522939556 c:\users\gault\documents\github\projet_piscine\projet_tdg\sommet.h
+1522955080 c:\users\gault\documents\github\projet_piscine\projet_tdg\sommet.h
 	<allegro.h>
 	<string>
+	<iostream>
 
-1522949491 source:c:\users\gault\documents\github\projet_piscine\projet_tdg\graphe.cpp
+1522955223 source:c:\users\gault\documents\github\projet_piscine\projet_tdg\graphe.cpp
 	"Graphe.h"
 
 1522936458 c:\users\gault\documents\github\projet_piscine\projet_tdg\graphe.h
@@ -105,13 +106,13 @@
 	"Arete.h"
 	"Sommet.h"
 
-1522938513 source:c:\users\gault\documents\github\projet_piscine\projet_tdg\main.cpp
+1522955244 source:c:\users\gault\documents\github\projet_piscine\projet_tdg\main.cpp
 	<iostream>
 	<stdio.h>
 	<cstdlib>
 	<stdlib.h>
 	"Graphe.h"
 
-1522928044 source:c:\users\gault\documents\github\projet_piscine\projet_tdg\sommet.cpp
+1522955015 source:c:\users\gault\documents\github\projet_piscine\projet_tdg\sommet.cpp
 	"Sommet.h"
 

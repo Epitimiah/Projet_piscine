@@ -13,7 +13,7 @@ int Graphe::LoadFile(std::string namefile)
 {
     bool done = false;
     std::stack<int> nbaretes;
-    std::string data1, data2, data3, data4;
+    std::string data1, data2, data3, data4, data5;
     int ent1, ent2, ent3;
     int forder;
     std::ifstream file(namefile, std::ios::in);
@@ -24,10 +24,11 @@ int Graphe::LoadFile(std::string namefile)
         m_ordre = forder;
         getline(file, data1);
 
-        ///Boucle for récuperant chaque influenceur.
+        ///Boucle for récuperant chaques données.
         for(int i = 0; i < m_ordre; i++)
         {
             getline(file, data1);
+            getline(file, data5);
             getline(file, data2);
             ent1 = atoi(data2.c_str());
             getline(file, data3);
@@ -35,7 +36,7 @@ int Graphe::LoadFile(std::string namefile)
             getline(file, data4);
             ent3 = atoi(data4.c_str());
             nbaretes.push(ent1);
-            m_sommet.push_back(Sommet(data1, ent1, ent2, ent3));
+            m_sommet.push_back(Sommet(data1, data5, ent1, ent2, ent3));
             for(auto elem : m_sommet)
             {
                 std::cout << elem.getPos_x() << " " << elem.m_pos_y << std::endl;
@@ -57,9 +58,11 @@ int Graphe::LoadFile(std::string namefile)
             }
             nbaretes.pop();
         }
-        done = true;
         file.close();
+        done = true;
+
     }
+
     else
     {
         std::cout << "Le fichier " << namefile << " n'est pas utilisable." << std::endl;
@@ -68,19 +71,36 @@ int Graphe::LoadFile(std::string namefile)
     return done;
 }
 
-/**int Graphe::SaveFile(std::string namefile)
+int Graphe::SaveFile(std::string namefile)
 {
     bool done = false;
     std::string data1, data2, data3, data4;
     int ent1, ent2, ent3, ent4;
-    int forder;
-    std::ifstream file(namefile, std::ios::in);
+    int gorder;
+    std::ofstream file(namefile, std::ios::trunc);
     ///Le if verifie si le fichier a pu être ouvert.
     if(file)
     {
-
+        gorder = m_sommet.size();
+        file << gorder << std::endl;
+        for(auto elem : m_sommet)
+        {
+            file << elem.m_nom << std::endl << elem.m_nom_image << std::endl <<elem.m_nbr_arete << std::endl << elem.m_pos_x << std::endl << elem.m_pos_y << std::endl;
+        }
+        for(auto elem : m_arete)
+        {
+            file << elem.m_sommet_d << std::endl << elem.m_sommet_a << std::endl << elem.m_poids << std::endl;
+        }
+        done = true;
+        file.close();
+        std::cout << "Save done." << std::endl;
     }
-}*/
+    else
+    {
+        std::cout << "Le fichier " << namefile << " n'est pas utilisable." << std::endl;
+    done = false;
+    }
+}
 
 void Graphe::DisplayChaine()
 {

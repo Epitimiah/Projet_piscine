@@ -33,7 +33,7 @@ int main()
 
     test->DisplayChaine();
 
-    /**std::cout << "Veuillez nous indiquez le nom du fichier a sauvegarder : " << std::endl;
+    std::cout << "Veuillez nous indiquez le nom du fichier a sauvegarder : " << std::endl;
     std::cin >> NameFile;
     done2 = test->SaveFile(NameFile);
     while (done2 == false)
@@ -41,7 +41,7 @@ int main()
         std::cout << "Veuillez nous indiquez le nom du fichier a sauvegarder : " << std::endl;
         std::cin >> NameFile;
         done2 = test->SaveFile(NameFile);
-    }*/
+    }
 
     delete test;
     return 0;
