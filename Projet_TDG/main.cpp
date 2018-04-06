@@ -18,10 +18,9 @@ int main()
     test = new Graphe;
 
     /// Ici nous demandons le nom du fichier texte à ouvrir.
-    /**std::cout << "Veuillez nous indiquez le nom du fichier a ouvrir : " << std::endl;
+    std::cout << "Veuillez nous indiquez le nom du fichier a ouvrir : " << std::endl;
     std::cin >> NameFile;
-    done1 = test->LoadFile(NameFile);*/
-    done1 = test->LoadFile("test.txt");
+    done1 = test->LoadFile(NameFile);
     while (done1 == false)
     {
         std::cout << "Veuillez nous indiquez le nom du fichier a ouvrir : " << std::endl;
