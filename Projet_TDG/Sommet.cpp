@@ -12,11 +12,11 @@ Sommet::Sommet(std::string nom, std::string nom_image, int nombre_arete, int pos
     m_image = load_bitmap(m_nom_image.c_str(), NULL);
         if (m_image)
         {
-            std::cout << "Loaded " << m_nom_image << std::endl;
+            std::cout << "Loaded " << m_nom_image << std::endl << std::endl;
         }
         else
         {
-                std::cout << "COULD NOT LOAD " << m_nom_image << std::endl;
+                std::cout << "COULD NOT LOAD " << m_nom_image << std::endl << std::endl;
         }
 }
 
