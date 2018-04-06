@@ -16,21 +16,107 @@
 	<allegro.h>
 	<string>
 
-1522919812 source:d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\arete.cpp
+1522925903 source:d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\arete.cpp
 	"Arete.h"
 
-1522919810 d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\arete.h
+1522925903 d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\arete.h
 	"Sommet.h"
 
-1522859754 d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\sommet.h
+1522925903 d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\sommet.h
 	<allegro.h>
 	<string>
 
-1522850447 source:d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\graphe.cpp
+1522925903 source:d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\graphe.cpp
 	"Graphe.h"
 
-1522856155 d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\graphe.h
+1522925903 d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\graphe.h
 	"Arete.h"
 	"Sommet.h"
 	<vector>
+
+1522936705 source:d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\main.cpp
+	<iostream>
+	"grman/grman.h"
+
+1522925903 source:d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\sommet.cpp
+	"Sommet.h"
+
+1522746623 source:d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\grman\coords.cpp
+	"coords.h"
+
+1522746623 d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\grman\coords.h
+	<cmath>
+
+1522840301 source:d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\grman\grman.cpp
+	<cmath>
+	<unordered_map>
+	<unordered_set>
+	<utility>
+	<string>
+	<iostream>
+	<regex>
+	"grman.h"
+	<allegro.h>
+	<png.h>
+	<loadpng.h>
+	<jpgalleg.h>
+
+1522746623 d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\grman\grman.h
+	<allegro.h>
+	<string>
+	"grman_couleurs.h"
+	"coords.h"
+	"widget.h"
+
+1522746623 d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\grman\grman_couleurs.h
+
+1522746624 d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\grman\widget.h
+	"grman.h"
+	<iostream>
+	<string>
+	<vector>
+	<algorithm>
+	<allegro.h>
+
+1522746623 source:d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\grman\widget.cpp
+	"widget.h"
+
+1522939686 source:d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\src\coords.cpp
+	"coords.h"
+
+1522939713 d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\include\coords.h
+	<cmath>
+
+1522949097 source:d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\src\graphman.cpp
+	"GraphMan.h"
+	<cmath>
+	<unordered_map>
+	<unordered_set>
+	<utility>
+	<string>
+	<iostream>
+	<regex>
+	<allegro.h>
+	<png.h>
+	<loadpng.h>
+	<jpgalleg.h>
+
+1522939940 d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\include\graphman.h
+	<allegro.h>
+	<string>
+	"GraphMan_colors.h"
+	"coords.h"
+
+1522939881 d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\include\graphman_colors.h
+
+1522948315 source:d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\src\widget.cpp
+	"widget.h"
+
+1522948357 d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\include\widget.h
+	"GraphMan.h"
+	<iostream>
+	<string>
+	<vector>
+	<algorithm>
+	<allegro.h>
 
