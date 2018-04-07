@@ -30,7 +30,7 @@ int main()
 
     cout << "Hello world!" << endl;
 
-    test->DisplayChaine();
+    //test->DisplayChaine();
 
     std::cout << "Veuillez nous indiquez le nom du fichier a sauvegarder : " << std::endl;
     std::cin >> NameFile;

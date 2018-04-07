@@ -16,27 +16,28 @@
 	<allegro.h>
 	<string>
 
-1522863145 source:c:\users\gaultier\documents\github\projet_piscine\projet_tdg\arete.cpp
+1523112944 source:c:\users\gaultier\documents\github\projet_piscine\projet_tdg\arete.cpp
 	"Arete.h"
 
-1522863133 c:\users\gaultier\documents\github\projet_piscine\projet_tdg\arete.h
+1523127665 c:\users\gaultier\documents\github\projet_piscine\projet_tdg\arete.h
 	"Sommet.h"
 
-1522862867 source:c:\users\gaultier\documents\github\projet_piscine\projet_tdg\sommet.cpp
+1523113635 source:c:\users\gaultier\documents\github\projet_piscine\projet_tdg\sommet.cpp
 	"Sommet.h"
 
-1522865959 c:\users\gaultier\documents\github\projet_piscine\projet_tdg\sommet.h
+1523127665 c:\users\gaultier\documents\github\projet_piscine\projet_tdg\sommet.h
 	<allegro.h>
 	<string>
+	<iostream>
 
-1522865959 source:c:\users\gaultier\documents\github\projet_piscine\projet_tdg\main.cpp
+1523127665 source:c:\users\gaultier\documents\github\projet_piscine\projet_tdg\main.cpp
 	<iostream>
 	<stdio.h>
 	<cstdlib>
 	<stdlib.h>
 	"Graphe.h"
 
-1522865466 c:\users\gaultier\documents\github\projet_piscine\projet_tdg\graphe.h
+1523127665 c:\users\gaultier\documents\github\projet_piscine\projet_tdg\graphe.h
 	<vector>
 	<iostream>
 	<cstdlib>
@@ -46,7 +47,7 @@
 	"Arete.h"
 	"Sommet.h"
 
-1522862753 source:c:\users\gaultier\documents\github\projet_piscine\projet_tdg\graphe.cpp
+1523114234 source:c:\users\gaultier\documents\github\projet_piscine\projet_tdg\graphe.cpp
 	"Graphe.h"
 
 1114367174 c:\users\gaultier\documents\github\projet_piscine\projet_tdg\allegro.h

@@ -16,10 +16,11 @@ private :
     int m_nbr_arete;
     int m_pos_x;
     int m_pos_y;
+    bool m_actif;
 public :
     Sommet();
     Sommet(std::string nom);
-    Sommet(std::string nom, std::string nom_image, int nombre_arete, int position_x = 0, int position_y = 0);
+    Sommet(std::string nom, std::string nom_image, int nombre_arete, int position_x = 0, int position_y = 0, bool actif = false);
     ~Sommet();
 
     //Getters et Setters
@@ -35,8 +36,11 @@ public :
     int getPos_x() { return m_pos_x; }
     void setPos_x(int position_x) { m_pos_x = position_x; }
 
-    int getPos_y() { return m_pos_y; }
-    void setPos_y(int position_y) { m_pos_y = position_y; }
+    bool getPos_y() { return m_pos_y; }
+    void setPos_y(bool position_y) { m_pos_y = position_y; }
+
+    int Getactif() { return m_actif; }
+    void Setactif(int val) { m_actif = val; }
 
 };
 
