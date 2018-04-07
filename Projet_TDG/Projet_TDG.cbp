@@ -34,6 +34,12 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Linker>
+			<Add library="loadpng" />
+			<Add library="png16.dll" />
+			<Add library="jpgalleg" />
+			<Add library="alleg44.dll" />
+		</Linker>
 		<Unit filename="Arete.cpp" />
 		<Unit filename="Arete.h" />
 		<Unit filename="Graphe.cpp" />

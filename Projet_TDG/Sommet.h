@@ -7,6 +7,7 @@
 #include "GraphMan.h"
 #include "widget.h"
 
+
 class VertexInterface
 {
     // Les (methodes des) classes amies pourront accéder
