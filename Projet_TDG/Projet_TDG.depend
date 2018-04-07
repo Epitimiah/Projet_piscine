@@ -19,24 +19,27 @@
 1522925903 source:d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\arete.cpp
 	"Arete.h"
 
-1522925903 d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\arete.h
+1523101912 d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\arete.h
 	"Sommet.h"
 
-1522925903 d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\sommet.h
+1523108246 d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\sommet.h
 	<allegro.h>
 	<string>
+	<iostream>
+	"GraphMan.h"
+	"widget.h"
 
 1523014793 source:d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\graphe.cpp
 	"Graphe.h"
 
-1522925903 d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\graphe.h
+1523107802 d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\graphe.h
 	"Arete.h"
-	"Sommet.h"
 	<vector>
 
-1523017190 source:d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\main.cpp
+1523035311 source:d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\main.cpp
 	<iostream>
-	"grman/grman.h"
+	"GraphMan.h"
+	"Graphe.h"
 
 1522925903 source:d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\sommet.cpp
 	"Sommet.h"
@@ -112,7 +115,7 @@
 1522948315 source:d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\src\widget.cpp
 	"widget.h"
 
-1522948357 d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\include\widget.h
+1523038501 d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\include\widget.h
 	"GraphMan.h"
 	<iostream>
 	<string>

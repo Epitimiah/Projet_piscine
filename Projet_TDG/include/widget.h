@@ -42,6 +42,8 @@ enum class GravityY {
 /// Par exemple une classe de base Widget pour l'aspect composite et une classe dérivée WidgetDecorated pour les styles
 class Widget
 {
+    friend class Graphe;
+
     protected :
         Widget *m_parent = nullptr;
         /// Naked pointers : Dangerous...

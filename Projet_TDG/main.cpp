@@ -4,6 +4,7 @@
 #include <iostream>
 
 #include "GraphMan.h"
+#include "Graphe.h"
 
 //Programme permettant de charger et de verifier l'exsitence d'une bitmap avant son utilisation
 BITMAP * load_bitmap_check(char *nomImage)
@@ -19,14 +20,16 @@ BITMAP * load_bitmap_check(char *nomImage)
     return bmp;
 }
 
-
-
 int main()
 {
+    //Declaration des bitmap
     BITMAP *page;
     BITMAP *fond;
     BITMAP *collision;
 
+    Graphe g;
+
+    //Fonction qui permet d'initialiser
     grman::init();
 
     page = create_bitmap(SCREEN_W, SCREEN_H);
@@ -42,6 +45,8 @@ int main()
         clear(page);
 
         blit(fond, page, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
+
+        g.update();
 
 
 
