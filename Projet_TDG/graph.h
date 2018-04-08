@@ -344,26 +344,31 @@ class Graphe
 
 
     public:
-        //Constructeur par defaut
-        //Graphe();
-        //Constructeurs surcharges
-        Graphe(std::vector <Arete> arete, std::vector <Sommet> sommet);
+        //Constructeur surcharge
 
         /// Les constructeurs sont à compléter selon vos besoin...
         /// Ici on ne donne qu'un seul constructeur qui peut utiliser une interface
         Graphe (GrapheInterface *interface=nullptr) :
             m_interface(interface)  {  }
-            void delete_edge(int indice);
-            void delete_sommet(int indice);
+
         //Destructeur
         ~Graphe();
-        ///Methodes
-        void add_interfaced_sommet(int idx, double value, int x, int y, std::string pic_name="", int pic_idx=0 );
-        void add_interfaced_arete(int idx, int vert1, int vert2, double poids, int n);
-        void LoadFile();
-        void SaveFile();
-        void reguPopulation();
+        //Methodes
 
+        void add_interfaced_sommet(int idx, double value, int x, int y, std::string pic_name="", int pic_idx=0 );
+        void add_interfaced_arete(int idx, int vert1, int vert2, double poids);
+        //Fonction qui charge le graphe à partir d'un fichier
+        void LoadFile(std::string name);
+        //Fonction qui sauvegarde le graphe dans un fichier
+        void SaveFile();
+        //Fonction pour la dynamique des populations
+        void reguPopulation();
+        //Fonction qui supprime les aretes
+        void delete_arete(int indice);
+        //Fonction qui supprime les sommets
+        void delete_sommet(int indice);
+        //Fonction qui permet de faire apparaitre un menu
+        void menu();
 
         /// La méthode update à appeler dans la boucle de jeu pour les graphes avec interface
         void update();

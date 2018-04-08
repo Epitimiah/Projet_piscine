@@ -15,7 +15,7 @@ SommetInterface::SommetInterface(int idx, int x, int y, std::string pic_name, in
 
     // Le slider de réglage de valeur
     m_top_box.add_child( m_slider_value );
-    m_slider_value.set_range(0.0 , 100.0); // Valeurs arbitraires, à adapter...
+    m_slider_value.set_range(0.0, 100.0);  // Valeurs arbitraires, à adapter...
     m_slider_value.set_dim(20,80);
     m_slider_value.set_gravity_xy(grman::GravityX::Left, grman::GravityY::Up);
 
@@ -54,14 +54,14 @@ Sommet::Sommet(std::string nom, std::string nom_image, int nombre_arete, int pos
 {
     /** Ici on load la bitmap de chaque sommet à sa création. */
     m_image = load_bitmap(m_nom_image.c_str(), NULL);
-        if (m_image)
-        {
-            std::cout << "Loaded " << m_nom_image << std::endl << std::endl;
-        }
-        else
-        {
-                std::cout << "COULD NOT LOAD " << m_nom_image << std::endl << std::endl;
-        }
+    if (m_image)
+    {
+        std::cout << "Loaded " << m_nom_image << std::endl << std::endl;
+    }
+    else
+    {
+        std::cout << "COULD NOT LOAD " << m_nom_image << std::endl << std::endl;
+    }
 }
 
 Sommet::~Sommet()
@@ -118,7 +118,7 @@ AreteInterface::AreteInterface(Sommet& depart, Sommet& arrive)
 
     // Le slider de réglage de valeur
     m_box_edge.add_child( m_slider_weight );
-    m_slider_weight.set_range(0.0 , 100.0); // Valeurs arbitraires, à adapter...
+    m_slider_weight.set_range(0.0, 100.0);  // Valeurs arbitraires, à adapter...
     m_slider_weight.set_dim(16,40);
     m_slider_weight.set_gravity_y(grman::GravityY::Up);
 
@@ -188,27 +188,23 @@ GrapheInterface::GrapheInterface(int x, int y, int w, int h)
     m_main_box.set_bg_color(BLANCJAUNE);
 }
 
-/*Graphe::Graphe()
-{
-}*/
-
 
 Graphe::~Graphe()
 {
 }
 
-void Graphe::LoadFile()
+void Graphe::LoadFile(std::string name)
 {
-    std::ifstream fichier("graphe.txt");
-        int nbAretes = 0, nbSommets = 0, x = 0, y = 0, sommet_depart = 0, sommet_arrivee = 0;
-        double valeur = 0, poids = 0;
-        int n = 0;
-        std::string nom;
+    std::ifstream fichier(name);
+    //std::ifstream fichier("graphe.txt"); ///A utiliser si on ne veut pas passer par le menu
+    //Declaration des variables
+    int nbAretes = 0, nbSommets = 0, x = 0, y = 0, sommet_depart = 0, sommet_arrivee = 0;
+    double valeur = 0, poids = 0;
+    std::string nom;
 
     m_interface = std::make_shared<GrapheInterface> (50, 0, 750, 600);
     if(fichier.is_open())
     {
-
         fichier >> nbAretes;
         fichier >> nbSommets;
 
@@ -228,10 +224,8 @@ void Graphe::LoadFile()
             fichier >> sommet_depart;
             fichier >> sommet_arrivee;
             fichier >> poids;
-            fichier >> n;
-            add_interfaced_arete(j, sommet_depart, sommet_arrivee, poids,n);
+            add_interfaced_arete(j, sommet_depart, sommet_arrivee, poids);
         }
-
     }
     else
     {
@@ -239,47 +233,51 @@ void Graphe::LoadFile()
     }
 }
 
-
+//Fonction qui ecrit dans un fichier les donnees du graphe
 void Graphe::SaveFile()
 {
     std::ofstream fichiersave("graphesave.txt", std::ios::out);
 
+    //Sauvegarde le nombre d'aretes
     fichiersave << m_aretes.size() << std::endl;
+    //Sauvegarde le nombre de sommets
     fichiersave << m_sommets.size() << std::endl;
 
+    //Boucle pour la sauvegarde des elements des sommets
     for(auto &elem : m_sommets)
     {
+        //Sauvegarde le nom des images
         fichiersave << elem.second.m_interface->m_img.get_pic_name() << " ";
+        //Sauvegarde de la valeur (poids)
         fichiersave << elem.second.m_value << " ";
+        //Sauvegarde de la position de x
         fichiersave << elem.second.m_interface->m_top_box.get_frame().pos.x << " ";
+        //Sauvegarde de la position de y
         fichiersave << elem.second.m_interface->m_top_box.get_frame().pos.y << " ";
         fichiersave << std::endl;
     }
-    //Cela remet toutes les aretes à 0 et je n'arrive pas à savoir pourquoi
+
+    //Boucle pour la sauvegarde des elements des aretes
     for(auto &elem : m_aretes)
     {
-
+        //Sauvegarde sommet de depart
         fichiersave << elem.second.m_sommet_d << " ";
+        //Sauvegarde sommet d'arrivee
         fichiersave << elem.second.m_sommet_a << " ";
+        //Sauvegarde du poids
         fichiersave << elem.second.m_poids << " ";
         fichiersave << std::endl;
     }
     fichiersave.close();
 }
 
-//Coef 5 à mettre à chacun des differents animaux mais en mettre un différent
 void Graphe::reguPopulation()
 {
-    for(int i = 0; i < m_aretes.size() ; i++)
+    for(auto &elem : m_sommets)
     {
-        std::cout << m_aretes[i].m_poids << "<-" << m_aretes[i].m_sommet_d << std::endl;
+        elem.second.m_value = elem.second.m_value + 5 * elem.second.m_value * (1-elem.second.m_value/4);
 
     }
-    /*for(auto &elem : m_sommets)
-    {
-         elem.second.m_value = elem.second.m_value + 5 * elem.second.m_value * (1-elem.second.m_value/4);
-
-    }*/
 }
 
 /// La méthode update à appeler dans la boucle de jeu pour les graphes avec interface
@@ -302,6 +300,10 @@ void Graphe::update()
     for (auto &elt : m_aretes)
         elt.second.post_update();
 
+    /*//Ajoute un
+    if(buttonAJout)*/
+
+
 }
 
 /// Aide à l'ajout de sommets interfacés
@@ -321,7 +323,7 @@ void Graphe::add_interfaced_sommet(int idx, double value, int x, int y, std::str
 }
 
 /// Aide à l'ajout d'arcs interfacés
-void Graphe::add_interfaced_arete(int idx, int id_vert1, int id_vert2, double poids, int n)
+void Graphe::add_interfaced_arete(int idx, int id_vert1, int id_vert2, double poids)
 {
     if ( m_aretes.find(idx)!=m_aretes.end() )
     {
@@ -345,38 +347,36 @@ void Graphe::add_interfaced_arete(int idx, int id_vert1, int id_vert2, double po
 
     m_sommets[id_vert1].m_out.push_back(idx);
     m_sommets[id_vert2].m_in.push_back(idx);
-
-
 }
 
-void Graphe::delete_edge(int indice)
+void Graphe::delete_arete(int indice)
 {
 
-        ///Ecrire l'arete dans mon fichier cimetiere
+    ///Ecrire l'arete dans mon fichier cimetiere
 /// référence vers le Edge à enlever
-        Arete &remed=m_aretes.at(indice);
+    Arete &remed=m_aretes.at(indice);
 /// test : on a bien des éléments interfacés
-        if (m_interface && remed.m_interface)
-        {
-            m_interface->m_main_box.remove_child( remed.m_interface->m_top_edge);
-            /// Il reste encore à virer l'arc supprimé de la liste des entrants et sortants des 2 sommets to et from !
-            /// References sur les listes de edges des sommets from et to
-            std::vector<int> &vefrom = m_sommets[remed.m_sommet_d].m_out;
-            std::vector<int> &veto = m_sommets[remed.m_sommet_a].m_in;
-            vefrom.erase( std::remove( vefrom.begin(), vefrom.end(),indice ), vefrom.end() );
-            veto.erase( std::remove(veto.begin(),veto.end(),indice ), veto.end() );
+    if (m_interface && remed.m_interface)
+    {
+        m_interface->m_main_box.remove_child( remed.m_interface->m_top_edge);
+        /// Il reste encore à virer l'arc supprimé de la liste des entrants et sortants des 2 sommets to et from !
+        /// References sur les listes de edges des sommets from et to
+        std::vector<int> &vefrom = m_sommets[remed.m_sommet_d].m_out;
+        std::vector<int> &veto = m_sommets[remed.m_sommet_a].m_in;
+        vefrom.erase( std::remove( vefrom.begin(), vefrom.end(),indice ), vefrom.end() );
+        veto.erase( std::remove(veto.begin(),veto.end(),indice ), veto.end() );
 
 /// Le Edge ne nécessite pas non plus de delete car on n'a pas fait de new (sémantique par valeur)
 /// Il suffit donc de supprimer l'entrée de la map pour supprimer à la fois l'Edge et le EdgeInterface
 /// mais malheureusement ceci n'enlevait pas automatiquement l'interface top_edge en tant que child de main_box !
-            m_aretes.erase(indice);
+        m_aretes.erase(indice);
 
 ///// Tester la cohérence : nombre d'arc entrants et sortants des sommets 1 et 2
 //            std::cout << m_vertices[remed.m_from].m_in.size() << " " << m_vertices[remed.m_from].m_out.size() << std::endl;
 //            std::cout << m_vertices[remed.m_to].m_in.size() << " " << m_vertices[remed.m_to].m_out.size() << std::endl;
 //            std::cout << m_edges.size() << std::endl;
 
-        }
+    }
 
 }
 
@@ -389,14 +389,101 @@ void Graphe::delete_sommet(int indice)
     {
         if(elem.second.m_sommet_a == indice || elem.second.m_sommet_d == indice)
         {
-                a.push_back(elem.first);
+            a.push_back(elem.first);
         }
     }
     int taille = a.size();
-    for(int i = 0;i<taille; i++)
+    for(int i = 0; i<taille; i++)
     {
-        delete_edge(a[i]);
+        delete_arete(a[i]);
     }
 
     m_sommets.erase(indice);
+}
+
+
+void Graphe::menu()
+{
+    grman::init();
+
+    /// Le nom du répertoire où se trouvent les images à charger
+    grman::set_pictures_path("pics");
+
+    std::string name = "";
+    int x = 270;
+    int y = 170;
+    int espace_x = 200;
+    int espace_y_case = 50;
+    int espace_y_entre_case = 30;
+    int texte_x_espace = 10;
+    int texte_y_espace = 10;
+
+    BITMAP* buffer;
+    buffer = create_bitmap(800,600);
+
+    //Afficher notre fond
+    //Aficher 3 case pour chaque graphe
+
+    //fct pr recuperer notre graph
+    while(name == "" &&  !key[KEY_ESC] )
+    {
+        //jolie cases
+        rectfill(buffer, x, y,  x + espace_x, y + espace_y_case, makecol(255,0,0));
+        rectfill(buffer, x, y + espace_y_case + espace_y_entre_case,  x + espace_x, y + espace_y_case*2 + espace_y_entre_case, makecol(255,0,0));
+        rectfill(buffer, x, y + espace_y_case*2 + espace_y_entre_case*2,  x + espace_x, y + espace_y_case*3 + espace_y_entre_case*2, makecol(255,0,0));
+
+        //texte
+        textprintf_ex(buffer, font, x+ texte_x_espace, y + texte_y_espace, makecol(255,255,255), -1, "Graphe 1");
+        textprintf_ex(buffer, font, x+ texte_x_espace, y + texte_y_espace + espace_y_case + espace_y_entre_case, makecol(255,255,255), -1, "Graphe 2");
+        textprintf_ex(buffer, font, x+ texte_x_espace, y + texte_y_espace + (espace_y_case + espace_y_entre_case)*2, makecol(255,255,255), -1, "Graphe 3");
+
+        if(mouse_b&1)
+        {
+            std::cout << "X : " << mouse_x << " & Y : " <<  mouse_y << "\n";
+            std::cout<< "Mon nom : " << name << "\n";
+
+            if(mouse_x > x && mouse_x < x + espace_x)
+            {
+                if(mouse_y > y && mouse_y < y + espace_y_case)
+                {
+                    name = "graph.txt";
+                }
+
+                ///A completer
+                if(mouse_y > y + 80 && mouse_y < y + 130)
+                {
+                    name = "graph2.txt";
+                }
+
+                if(mouse_y > y + 160 && mouse_y < y + 210)
+                {
+                    name = "graph3.txt";
+                }
+            }
+        }
+        blit(buffer, screen, 0, 0, 0, 0,  800, 600);
+
+        //grman::mettre_a_jour();
+        clear(buffer);
+        rest(20);
+    }
+
+    //code pr demander
+
+    /// Un exemple de graphe
+
+    LoadFile(name);
+
+    SaveFile();
+
+    while ( !key[KEY_ESC] )
+    {
+        /// Il faut appeler les méthodes d'update des objets qui comportent des widgets
+        update();
+
+        /// Mise à jour générale (clavier/souris/buffer etc...)
+        grman::mettre_a_jour();
+    }
+
+
 }
