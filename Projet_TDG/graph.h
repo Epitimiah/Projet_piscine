@@ -368,6 +368,11 @@ class Graphe
         int SaveFile(std::string namefile);
         void DisplayChaine();
 
+        void AddArete(Arete added_arete);
+        void AddSommet(Sommet added_sommet);
+        void SuppArete(Arete supressed_arete);
+        void SuppSommet(Sommet supressed_sommet);
+
 
         /// La méthode update à appeler dans la boucle de jeu pour les graphes avec interface
         void update();

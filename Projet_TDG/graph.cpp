@@ -206,7 +206,7 @@ int Graphe::LoadFile(std::string namefile)
     std::stack<int> nbaretes;
     std::string data1, data2, data3, data4, data5;
     int ent1=0, ent2=0;
-    double ent3;
+    double ent3=0;
     int forder=0;
     std::ifstream file(namefile, std::ios::in);
     ///Le if verifie si le fichier a pu être ouvert.
@@ -229,7 +229,7 @@ int Graphe::LoadFile(std::string namefile)
             ent3 = atoi(data4.c_str());
             nbaretes.push(ent1);
             //m_sommet.push_back(Sommet(data1, data5, ent1, ent2, ent3));
-            add_interfaced_sommet()
+            add_interfaced_sommet(i, ent3, i+11, i+55, , i); //Je ne sais pas quoi mettre, ne sachant pas à quoi correspond tes variables (ent1/2/3 et data1/2/3/4/5 etc)
             for(auto elem : m_sommet)
             {
                 std::cout << elem.getPos_x() << " " << elem.m_pos_y << std::endl;
@@ -248,7 +248,7 @@ int Graphe::LoadFile(std::string namefile)
                 getline(file, data3);
                 ent3 = atoi(data3.c_str());
                 //m_arete.push_back(Arete(ent1, ent2, ent3));
-                add_interfaced_arete(j, ent1, ent2, ent3);
+                //add_interfaced_arete(j, ent1, ent2, ent3);
             }
             nbaretes.pop();
         }
@@ -305,6 +305,26 @@ void Graphe::DisplayChaine()
         std::cout << elem.m_sommet_a << " de position : " << m_sommet[elem.m_sommet_a-1].m_pos_x << " " << m_sommet[elem.m_sommet_a-1].m_pos_y << std::endl;
         std::cout << " Cette liaison est de poids : " << elem.m_poids << std::endl << std::endl;
     }
+}
+
+void Graphe::AddSommet(Sommet added_sommet)
+{
+    added_sommet.Setactif(true);
+}
+
+void Graphe::SuppSommet(Sommet supressed_sommet)
+{
+    supressed_sommet.Setactif(false);
+}
+
+void Graphe::AddArete(Arete added_arete)
+{
+    added_arete.Setactive(true);
+}
+
+void Graphe::SuppArete(Arete supressed_arete)
+{
+    supressed_arete.Setactive(false);
 }
 
 /// La méthode update à appeler dans la boucle de jeu pour les graphes avec interface

@@ -9,7 +9,7 @@ int main()
     grman::init();
 
     /// Le nom du répertoire où se trouvent les images à charger
-    grman::set_pictures_path("pics");
+    grman::set_pictures_path("pics/chain_1");
 
     /// Un exemple de graphe
     Graphe g;
@@ -32,7 +32,7 @@ int main()
 
     test->DisplayChaine();
 
-    std::cout << "Veuillez nous indiquez le nom du fichier a sauvegarder : " << std::endl;
+    /*std::cout << "Veuillez nous indiquez le nom du fichier a sauvegarder : " << std::endl;
     std::cin >> NameFile;
     done2 = test->SaveFile(NameFile);
     while (done2 == false)
@@ -40,7 +40,7 @@ int main()
         std::cout << "Veuillez nous indiquez le nom du fichier a sauvegarder : " << std::endl;
         std::cin >> NameFile;
         done2 = test->SaveFile(NameFile);
-    }
+    }*/
 
 
     /// Vous gardez la main sur la "boucle de jeu"
