@@ -117,7 +117,7 @@
 1523143495 source:d:\léa\documents\ece\ing2\informatique\semestre 2\github\proj_piscine\projet_tdg\grman\widget.cpp
 	"widget.h"
 
-1523161998 source:d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\graph.cpp
+1523211443 source:d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\graph.cpp
 	"graph.h"
 
 1523211281 d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\graph.h
@@ -173,7 +173,68 @@
 1523143495 source:d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\grman\widget.cpp
 	"widget.h"
 
-1523161234 source:d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\main.cpp
+1523212811 source:d:\léa\documents\ece\ing2\informatique\semestre 2\github\projet_piscine\projet_tdg\main.cpp
+	"grman/grman.h"
+	<iostream>
+	"graph.h"
+
+1523216538 source:d:\telechargements\projet_piscine\projet_tdg\graph.cpp
+	"graph.h"
+
+1523216486 d:\telechargements\projet_piscine\projet_tdg\graph.h
+	<iostream>
+	<sstream>
+	<vector>
+	<map>
+	<string>
+	<memory>
+	<cstdlib>
+	<fstream>
+	<stack>
+	<stdlib.h>
+	"grman/grman.h"
+
+1522746624 d:\telechargements\projet_piscine\projet_tdg\grman\grman.h
+	<allegro.h>
+	<string>
+	"grman_couleurs.h"
+	"coords.h"
+	"widget.h"
+
+1522746624 d:\telechargements\projet_piscine\projet_tdg\grman\grman_couleurs.h
+
+1522746624 d:\telechargements\projet_piscine\projet_tdg\grman\coords.h
+	<cmath>
+
+1523160720 d:\telechargements\projet_piscine\projet_tdg\grman\widget.h
+	"grman.h"
+	<iostream>
+	<string>
+	<vector>
+	<algorithm>
+	<allegro.h>
+
+1522746624 source:d:\telechargements\projet_piscine\projet_tdg\grman\coords.cpp
+	"coords.h"
+
+1522840302 source:d:\telechargements\projet_piscine\projet_tdg\grman\grman.cpp
+	<cmath>
+	<unordered_map>
+	<unordered_set>
+	<utility>
+	<string>
+	<iostream>
+	<regex>
+	"grman.h"
+	<allegro.h>
+	<png.h>
+	<loadpng.h>
+	<jpgalleg.h>
+
+1523143496 source:d:\telechargements\projet_piscine\projet_tdg\grman\widget.cpp
+	"widget.h"
+
+1523216562 source:d:\telechargements\projet_piscine\projet_tdg\main.cpp
 	"grman/grman.h"
 	<iostream>
 	"graph.h"

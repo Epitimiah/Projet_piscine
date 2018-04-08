@@ -15,6 +15,8 @@ int main()
     Graphe g;
     g.LoadFile();
 
+    g.delete_edge(2);
+    g.delete_sommet(3);
     g.SaveFile();
 
     /// Vous gardez la main sur la "boucle de jeu"

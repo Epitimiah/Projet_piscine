@@ -192,9 +192,6 @@ GrapheInterface::GrapheInterface(int x, int y, int w, int h)
 {
 }*/
 
-Graphe::Graphe(std::vector <Arete> arete, std::vector <Sommet> sommet) : m_arete(arete), m_sommet(sommet)
-{
-}
 
 Graphe::~Graphe()
 {
@@ -203,13 +200,14 @@ Graphe::~Graphe()
 void Graphe::LoadFile()
 {
     std::ifstream fichier("graphe.txt");
+        int nbAretes = 0, nbSommets = 0, x = 0, y = 0, sommet_depart = 0, sommet_arrivee = 0;
+        double valeur = 0, poids = 0;
+        int n = 0;
+        std::string nom;
 
     m_interface = std::make_shared<GrapheInterface> (50, 0, 750, 600);
     if(fichier.is_open())
     {
-        int nbAretes = 0, nbSommets = 0, x = 0, y = 0, sommet_depart = 0, sommet_arrivee = 0;
-        double valeur = 0, poids = 0;
-        std::string nom;
 
         fichier >> nbAretes;
         fichier >> nbSommets;
@@ -221,7 +219,6 @@ void Graphe::LoadFile()
             fichier >> valeur;
             fichier >> x;
             fichier >> y;
-
             add_interfaced_sommet(i, valeur, x, y, nom, 1);
         }
 
@@ -231,9 +228,10 @@ void Graphe::LoadFile()
             fichier >> sommet_depart;
             fichier >> sommet_arrivee;
             fichier >> poids;
-
-            add_interfaced_arete(j, sommet_depart, sommet_arrivee, poids);
+            fichier >> n;
+            add_interfaced_arete(j, sommet_depart, sommet_arrivee, poids,n);
         }
+
     }
     else
     {
@@ -241,9 +239,10 @@ void Graphe::LoadFile()
     }
 }
 
+
 void Graphe::SaveFile()
 {
-    std::ofstream fichiersave("graphe.txt", std::ios::out);
+    std::ofstream fichiersave("graphesave.txt", std::ios::out);
 
     fichiersave << m_aretes.size() << std::endl;
     fichiersave << m_sommets.size() << std::endl;
@@ -265,18 +264,22 @@ void Graphe::SaveFile()
         fichiersave << elem.second.m_poids << " ";
         fichiersave << std::endl;
     }
-
     fichiersave.close();
 }
 
 //Coef 5 à mettre à chacun des differents animaux mais en mettre un différent
 void Graphe::reguPopulation()
 {
-    for(auto &elem : m_sommets)
+    for(int i = 0; i < m_aretes.size() ; i++)
+    {
+        std::cout << m_aretes[i].m_poids << "<-" << m_aretes[i].m_sommet_d << std::endl;
+
+    }
+    /*for(auto &elem : m_sommets)
     {
          elem.second.m_value = elem.second.m_value + 5 * elem.second.m_value * (1-elem.second.m_value/4);
 
-    }
+    }*/
 }
 
 /// La méthode update à appeler dans la boucle de jeu pour les graphes avec interface
@@ -318,7 +321,7 @@ void Graphe::add_interfaced_sommet(int idx, double value, int x, int y, std::str
 }
 
 /// Aide à l'ajout d'arcs interfacés
-void Graphe::add_interfaced_arete(int idx, int id_vert1, int id_vert2, double poids)
+void Graphe::add_interfaced_arete(int idx, int id_vert1, int id_vert2, double poids, int n)
 {
     if ( m_aretes.find(idx)!=m_aretes.end() )
     {
@@ -335,5 +338,65 @@ void Graphe::add_interfaced_arete(int idx, int id_vert1, int id_vert2, double po
     AreteInterface *ei = new AreteInterface(m_sommets[id_vert1], m_sommets[id_vert2]);
     m_interface->m_main_box.add_child(ei->m_top_edge);
     m_aretes[idx] = Arete(poids, ei);
+
+    /// OOOPS ! Prendre en compte l'arc ajouté dans la topologie du graphe !
+    m_aretes[idx].m_sommet_d = id_vert1;
+    m_aretes[idx].m_sommet_a = id_vert2;
+
+    m_sommets[id_vert1].m_out.push_back(idx);
+    m_sommets[id_vert2].m_in.push_back(idx);
+
+
 }
 
+void Graphe::delete_edge(int indice)
+{
+
+        ///Ecrire l'arete dans mon fichier cimetiere
+/// référence vers le Edge à enlever
+        Arete &remed=m_aretes.at(indice);
+/// test : on a bien des éléments interfacés
+        if (m_interface && remed.m_interface)
+        {
+            m_interface->m_main_box.remove_child( remed.m_interface->m_top_edge);
+            /// Il reste encore à virer l'arc supprimé de la liste des entrants et sortants des 2 sommets to et from !
+            /// References sur les listes de edges des sommets from et to
+            std::vector<int> &vefrom = m_sommets[remed.m_sommet_d].m_out;
+            std::vector<int> &veto = m_sommets[remed.m_sommet_a].m_in;
+            vefrom.erase( std::remove( vefrom.begin(), vefrom.end(),indice ), vefrom.end() );
+            veto.erase( std::remove(veto.begin(),veto.end(),indice ), veto.end() );
+
+/// Le Edge ne nécessite pas non plus de delete car on n'a pas fait de new (sémantique par valeur)
+/// Il suffit donc de supprimer l'entrée de la map pour supprimer à la fois l'Edge et le EdgeInterface
+/// mais malheureusement ceci n'enlevait pas automatiquement l'interface top_edge en tant que child de main_box !
+            m_aretes.erase(indice);
+
+///// Tester la cohérence : nombre d'arc entrants et sortants des sommets 1 et 2
+//            std::cout << m_vertices[remed.m_from].m_in.size() << " " << m_vertices[remed.m_from].m_out.size() << std::endl;
+//            std::cout << m_vertices[remed.m_to].m_in.size() << " " << m_vertices[remed.m_to].m_out.size() << std::endl;
+//            std::cout << m_edges.size() << std::endl;
+
+        }
+
+}
+
+void Graphe::delete_sommet(int indice)
+{
+    std::vector<int> a;
+    Sommet &remed=m_sommets.at(indice);
+    m_interface->m_main_box.remove_child( remed.m_interface->m_top_box);
+    for(auto elem : m_aretes)
+    {
+        if(elem.second.m_sommet_a == indice || elem.second.m_sommet_d == indice)
+        {
+                a.push_back(elem.first);
+        }
+    }
+    int taille = a.size();
+    for(int i = 0;i<taille; i++)
+    {
+        delete_edge(a[i]);
+    }
+
+    m_sommets.erase(indice);
+}

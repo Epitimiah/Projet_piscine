@@ -330,8 +330,7 @@ class GrapheInterface
 class Graphe
 {
     private :
-        std::vector <Arete> m_arete;
-        std::vector <Sommet> m_sommet;
+
         int m_ordre;
 
         /// La "liste" des arêtes
@@ -354,12 +353,13 @@ class Graphe
         /// Ici on ne donne qu'un seul constructeur qui peut utiliser une interface
         Graphe (GrapheInterface *interface=nullptr) :
             m_interface(interface)  {  }
+            void delete_edge(int indice);
+            void delete_sommet(int indice);
         //Destructeur
         ~Graphe();
-        //Methodes
+        ///Methodes
         void add_interfaced_sommet(int idx, double value, int x, int y, std::string pic_name="", int pic_idx=0 );
-        void add_interfaced_arete(int idx, int vert1, int vert2, double poids=0);
-
+        void add_interfaced_arete(int idx, int vert1, int vert2, double poids, int n);
         void LoadFile();
         void SaveFile();
         void reguPopulation();
