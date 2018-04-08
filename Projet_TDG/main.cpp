@@ -13,35 +13,9 @@ int main()
 
     /// Un exemple de graphe
     Graphe g;
-    bool done1 = false;
-    bool done2 = false;
-    std::string NameFile;
-    Graphe * test;
-    test = new Graphe;
+    g.LoadFile();
 
-    /// Ici nous demandons le nom du fichier texte à ouvrir.
-    std::cout << "Veuillez nous indiquez le nom du fichier a ouvrir : " << std::endl;
-    std::cin >> NameFile;
-    done1 = test->LoadFile(NameFile);
-    while (done1 == false)
-    {
-        std::cout << "Veuillez nous indiquez le nom du fichier a ouvrir : " << std::endl;
-        std::cin >> NameFile;
-        done1 = test->LoadFile(NameFile);
-    }
-
-    test->DisplayChaine();
-
-    /*std::cout << "Veuillez nous indiquez le nom du fichier a sauvegarder : " << std::endl;
-    std::cin >> NameFile;
-    done2 = test->SaveFile(NameFile);
-    while (done2 == false)
-    {
-        std::cout << "Veuillez nous indiquez le nom du fichier a sauvegarder : " << std::endl;
-        std::cin >> NameFile;
-        done2 = test->SaveFile(NameFile);
-    }*/
-
+    g.SaveFile();
 
     /// Vous gardez la main sur la "boucle de jeu"
     /// ( contrairement à des frameworks plus avancés )
@@ -54,7 +28,6 @@ int main()
         grman::mettre_a_jour();
     }
 
-    delete test;
     grman::fermer_allegro();
 
     return 0;

@@ -291,6 +291,8 @@ class Arete
         void pre_update();
         void post_update();
 
+
+
 };
 
 
@@ -364,14 +366,9 @@ class Graphe
         void add_interfaced_sommet(int idx, double value, int x, int y, std::string pic_name="", int pic_idx=0 );
         void add_interfaced_arete(int idx, int vert1, int vert2, double poids=0);
 
-        int LoadFile(std::string namefile);
-        int SaveFile(std::string namefile);
-        void DisplayChaine();
-
-        void AddArete(Arete added_arete);
-        void AddSommet(Sommet added_sommet);
-        void SuppArete(Arete supressed_arete);
-        void SuppSommet(Sommet supressed_sommet);
+        void LoadFile();
+        void SaveFile();
+        void reguPopulation();
 
 
         /// La méthode update à appeler dans la boucle de jeu pour les graphes avec interface

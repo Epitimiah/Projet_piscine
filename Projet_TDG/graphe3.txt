@@ -1,0 +1,17 @@
+24
+15
+copepode.bmp 50 500 500
+diatom.bmp 45 450 450
+dims.bmp 40 400 400
+dinoflagelle.bmp 35 350 350
+lancetfish.bmp 30 300 300
+lilshark.bmp 25 250 250
+mackerel.bmp 20 200 200
+marlin.bmp 15 150 150
+nototropis.bmp 10 100 100
+poissonlune.bmp 5 50 50
+pteropod.bmp 10 110 110
+shark.bmp 15 120 120
+shrimp.bmp 20 130 130
+sunfish.bmp 25 140 140
+tuna.bmp 30 170 170

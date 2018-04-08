@@ -1,0 +1,14 @@
+6 
+6
+bluebird.bmp 20 500 500 
+grass.bmp 20 400 400
+mushrooms.bmp 15 300 300
+owl.bmp 10 200 200
+sauterelle.bmp 30 100 100
+snake.bmp 5 50 50
+1 2 3 
+2 3 4
+3 4 5
+0 1 2
+0 5 4
+4 5 3 
