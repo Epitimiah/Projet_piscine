@@ -272,8 +272,11 @@ void Graphe::SaveFile()
 //Coef 5 à mettre à chacun des differents animaux mais en mettre un différent
 void Graphe::reguPopulation()
 {
-    m_value = m_value + 5 * m_value * (1-m_value/4);
+    for(auto &elem : m_sommets)
+    {
+         elem.second.m_value = elem.second.m_value + 5 * elem.second.m_value * (1-elem.second.m_value/4);
 
+    }
 }
 
 /// La méthode update à appeler dans la boucle de jeu pour les graphes avec interface

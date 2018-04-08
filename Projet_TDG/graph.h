@@ -84,8 +84,6 @@
 #include <stack>
 #include <stdlib.h>
 
-
-
 #include "grman/grman.h"
 
 /***************************************************
@@ -261,7 +259,6 @@ class Arete
         /// le POINTEUR sur l'interface associée, nullptr -> pas d'interface
         std::shared_ptr<AreteInterface> m_interface = nullptr;
 
-
     public:
         Arete();
 
@@ -290,16 +287,13 @@ class Arete
         /// Voir l'implémentation Graph::update dans le .cpp
         void pre_update();
         void post_update();
-
-
-
 };
 
 
 
 
 /***************************************************
-                    GRAPH
+                    GRAPHE
 ****************************************************/
 
 class GrapheInterface
