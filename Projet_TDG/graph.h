@@ -84,6 +84,8 @@
 #include <stack>
 #include <stdlib.h>
 
+#include"Graphe.h"
+
 #include "grman/grman.h"
 
 /***************************************************
@@ -200,6 +202,9 @@ class Sommet
         /// Voir l'implémentation Graph::update dans le .cpp
         void pre_update();
         void post_update();
+
+        //Fonction pour l'etude des graphes
+        Sommet_g to_Sommet_g();
 };
 
 
@@ -287,6 +292,9 @@ class Arete
         /// Voir l'implémentation Graph::update dans le .cpp
         void pre_update();
         void post_update();
+
+        //Fonction pour l'etude des graphes
+        Arete_g to_Arete_g();
 };
 
 
@@ -378,6 +386,9 @@ class Graphe
         void toolBarre();
         //Fonction qui permet de faire apparaitre un menu pour choisir entre les 3 grahes
         void menu();
+
+        //Fonction pour l'etude des graphes
+        Graphe_g to_Graphe_g();
 
         /// La méthode update à appeler dans la boucle de jeu pour les graphes avec interface
         void update();

@@ -91,7 +91,11 @@ void Sommet::post_update()
     m_value = m_interface->m_slider_value.get_value();
 }
 
-
+Sommet_g Sommet::to_Sommet_g()
+{
+    Sommet_g retour(m_nom);
+    return retour;
+}
 
 /***************************************************
                     ARETE
@@ -163,7 +167,11 @@ void Arete::post_update()
     m_poids = m_interface->m_slider_weight.get_value();
 }
 
-
+Arete_g Arete::to_Arete_g()
+{
+    Arete_g retour(m_sommet_d, m_sommet_a, m_poids);
+    return retour;
+}
 
 /***************************************************
                     GRAPHE
@@ -299,19 +307,19 @@ void Graphe::reguPopulation()
             {
                 if(elemS.second.m_value > m_sommets[elemA.second.m_sommet_a].m_value)
                 {
-                    elemS.second.m_value(elemS.second.m_value - elemA.second.m_poids);
+                    elemS.second.m_value += (- elemA.second.m_poids);
                 }
 
                 if(elemS.second.m_value < m_sommets[elemA.second.m_sommet_a].m_value)
                 {
-                    elemS.second.m_value(elemS.second.m_value + elemA.second.m_poids);
-                    elemA.second.m_value(elemA.second.m_value - elemS.second.m_poids);
+                    elemS.second.m_value += (+ elemA.second.m_poids);
+                    elemA.second.m_poids += (- elemS.second.m_value);
                 }
             }
             //Condition pour blinder le nombre minimum à 0
             if(elemS.second.m_value < 0)
             {
-                elemS.second.m_value(0);
+                elemS.second.m_value = 0;
             }
             ////Condition pour blinder le nombre maximum à 100
             if(elemS.second.m_value > 100)
@@ -342,6 +350,8 @@ void Graphe::update()
     for (auto &elt : m_aretes)
         elt.second.post_update();
 
+    //Affichage pour l'etudes des graphes
+    std::cout << to_Graphe_g().K_arete_Conex(5)<<std::endl;
     /*//Ajoute un
     if(buttonAJout)*/
 
@@ -528,3 +538,19 @@ void Graphe::menu()
 
 }
 
+
+//Fonctions pour l'etude des graphes
+Graphe_g Graphe::to_Graphe_g()
+{
+    std::vector <Sommet_g> sommet;
+    std::vector <Arete_g> arete;
+
+    for(auto elem : m_sommets) sommet.push_back(elem.second.to_Sommet_g());
+    for(auto elem : m_aretes) arete.push_back(elem.second.to_Arete_g());
+
+    Graphe_g retour (arete, sommet);
+    retour.Setsuc();
+    retour.Reinit_marque();
+
+    return retour;
+}
