@@ -15,6 +15,7 @@ int main()
     while ( !key[KEY_ESC] )
     {
         g.menu();
+        rest(1000);
     }
 
     grman::fermer_allegro();

@@ -12,15 +12,6 @@ SommetInterface::SommetInterface(int idx, int x, int y, std::string pic_name, in
     m_top_box.set_dim(130, 100);
     m_top_box.set_moveable();
 
-    // Le slider de réglage de valeur
-    m_top_box.add_child( m_slider_value );
-    m_slider_value.set_range(0.0, 100.0);  // Valeurs arbitraires, à adapter...
-    m_slider_value.set_dim(20,80);
-    m_slider_value.set_gravity_xy(grman::GravityX::Left, grman::GravityY::Up);
-
-    // Label de visualisation de valeur
-    m_top_box.add_child( m_label_value );
-    m_label_value.set_gravity_xy(grman::GravityX::Left, grman::GravityY::Down);
 
     // Une illustration...
     if (pic_name!="")
@@ -31,6 +22,13 @@ SommetInterface::SommetInterface(int idx, int x, int y, std::string pic_name, in
         m_img.set_gravity_x(grman::GravityX::Right);
     }
 
+
+
+    // Label de visualisation de valeur
+    m_top_box.add_child( m_label_value );
+    m_label_value.set_gravity_xy(grman::GravityX::Left, grman::GravityY::Down);
+
+
     // Label de visualisation d'index du sommet dans une boite
     m_top_box.add_child( m_box_label_idx );
     m_box_label_idx.set_gravity_xy(grman::GravityX::Right, grman::GravityY::Down);
@@ -39,6 +37,14 @@ SommetInterface::SommetInterface(int idx, int x, int y, std::string pic_name, in
 
     m_box_label_idx.add_child( m_label_idx );
     m_label_idx.set_message( std::to_string(idx) );
+
+    // Le slider de réglage de valeur
+    m_top_box.add_child( m_slider_value );
+    m_slider_value.set_range(0.0, 100.0);  // Valeurs arbitraires, à adapter...
+    m_slider_value.set_dim(20,80);
+    m_slider_value.set_gravity_xy(grman::GravityX::Left, grman::GravityY::Up);
+
+
 }
 
 Sommet::Sommet()
@@ -194,33 +200,42 @@ GrapheInterface::GrapheInterface(int x, int y, int w, int h)
     m_main_box.set_gravity_xy(grman::GravityX::Right, grman::GravityY::Up);
     m_main_box.set_bg_color(BLANCJAUNE);
 
-    //Bouton pour la tool barre
-    //Bouton d'ajout sommet
-    m_tool_box.add_child(m_ajout);
-    m_ajout.set_frame(2,2,80,70);
-    m_ajout.set_bg_color(BLEUCLAIR);
+    ///Bouton pour la tool barre
+    //Bouton retour au menu
+    m_tool_box.add_child(m_goBack);
+    m_goBack.set_frame(0, 750, 50, 50);
+    m_goBack.set_bg_color(ORANGECLAIR);
 
-    m_tool_box.add_child(m_nomAjout);
-    m_nomAjout.set_pos(1,38);
-    m_nomAjout.set_message("Ajout");
+    m_tool_box.add_child(m_nomGoBack);
+    m_nomGoBack.set_pos(0, 750);
+    m_nomGoBack.set_message("Retourner au menu");
+
+    //Bouton d'ajout sommet
+    m_tool_box.add_child(m_ajoutSommet);
+    m_ajoutSommet.set_frame(2,2,80,70);
+    m_ajoutSommet.set_bg_color(BLEUCLAIR);
+
+    m_tool_box.add_child(m_nomAjoutSommet);
+    m_nomAjoutSommet.set_pos(1,38);
+    m_nomAjoutSommet.set_message("Ajouter sommet");
 
     //Bouton d'ajout arete
-    m_tool_box.add_child(m_ajout);
-    m_ajout.set_frame(2,2,80,70);
-    m_ajout.set_bg_color(BLEUCLAIR);
+    m_tool_box.add_child(m_ajoutArete);
+    m_ajoutArete.set_frame(2,2,80,70);
+    m_ajoutArete.set_bg_color(BLEUCLAIR);
 
-    m_tool_box.add_child(m_nomAjout);
-    m_nomAjout.set_pos(1,38);
-    m_nomAjout.set_message("Ajout");
+    m_tool_box.add_child(m_nomAjoutArete);
+    m_nomAjoutArete.set_pos(1,38);
+    m_nomAjoutArete.set_message("Ajouter arete");
 
     //Bouton de suppression sommet
-    m_tool_box.add_child(m_suppr);
-    m_suppr.set_frame(4,4,160,140);
-    m_suppr.set_bg_color(BLEUCLAIR);
+    m_tool_box.add_child(m_supprSommet);
+    m_supprSommet.set_frame(4,4,160,140);
+    m_supprSommet.set_bg_color(BLEUCLAIR);
 
-    m_tool_box.add_child(m_nomSuppr);
-    m_nomSuppr.set_pos(5,45);
-    m_nomSuppr.set_message("Suppression");
+    m_tool_box.add_child(m_nomSupprSommet);
+    m_nomSupprSommet.set_pos(5,45);
+    m_nomSupprSommet.set_message("Supprimer sommet");
 
     //Bouton de suppression arete
     m_tool_box.add_child(m_supprArete);
@@ -229,25 +244,25 @@ GrapheInterface::GrapheInterface(int x, int y, int w, int h)
 
     m_tool_box.add_child(m_nomSupprArete);
     m_nomSupprArete.set_pos(5,45);
-    m_nomSupprArete.set_message("Suppression");
+    m_nomSupprArete.set_message("Supprimer arete");
 
     //Bouton pour la regulation de population
     m_tool_box.add_child(m_reguPopu);
-    m_reguPopur.set_frame(4,4,160,140);
+    m_reguPopu.set_frame(4,4,160,140);
     m_reguPopu.set_bg_color(BLEUCLAIR);
 
     m_tool_box.add_child(m_nomReguPopu);
     m_nomReguPopu.set_pos(5,45);
-    m_nomReguPopur.set_message("Suppression");
+    m_nomReguPopu.set_message("Reguler population");
 
     //Bouton pour afficher le nombre de composantes connexes
     m_tool_box.add_child(m_composantesCo);
-    m_composantesCor.set_frame(4,4,160,140);
+    m_composantesCo.set_frame(4,4,160,140);
     m_composantesCo.set_bg_color(BLEUCLAIR);
 
     m_tool_box.add_child(m_nomComposantesCo);
     m_nomComposantesCo.set_pos(5,45);
-    m_nomComposantesCo.set_message("Suppression");
+    m_nomComposantesCo.set_message("Composantes connexes");
 
     //Bouton pour afficher la k connexité
     m_tool_box.add_child(m_kCo);
@@ -256,9 +271,7 @@ GrapheInterface::GrapheInterface(int x, int y, int w, int h)
 
     m_tool_box.add_child(m_nomKCo);
     m_nomKCo.set_pos(5,45);
-    m_nomKCo.set_message("Suppression");
-
-
+    m_nomKCo.set_message("k-connexité");
 
 }
 
@@ -401,9 +414,10 @@ void Graphe::update()
         elt.second.post_update();
 
     //Affichage pour l'etudes des graphes
-    std::cout << to_Graphe_g().K_arete_Conex(5)<<std::endl;
-    /*//Ajoute un
-    if(buttonAJout)*/
+    //std::cout << to_Graphe_g().K_arete_Conex(5)<<std::endl;
+
+    //Ajoute un
+    //if(buttonAJout)
 
 
 }
@@ -577,10 +591,24 @@ void Graphe::menu()
     //On sauvegarde le graphe dans un autre fichier particulier à la sauvegarde
     SaveFile();
 
-    while ( !key[KEY_ESC] )
+    //Variable permettant d'effectuer le retour au menu
+    bool goBack = true;
+
+    while ( !key[KEY_ESC] && goBack )
     {
         /// Il faut appeler les méthodes d'update des objets qui comportent des widgets
         update();
+
+        //Boucle pour retourner au menu à partir d'un graphe
+
+            if(mouse_x > 0 && mouse_y < 750 && mouse_y > 800 && mouse_x < 50)
+            {
+                std::cout <<"Lea is too strong 4 me\n";
+                if(mouse_b&1){
+
+                goBack = false;}
+            }
+
 
         /// Mise à jour générale (clavier/souris/buffer etc...)
         grman::mettre_a_jour();
