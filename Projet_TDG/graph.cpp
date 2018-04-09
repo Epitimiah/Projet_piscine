@@ -91,7 +91,11 @@ void Sommet::post_update()
     m_value = m_interface->m_slider_value.get_value();
 }
 
-
+Sommet_g Sommet::to_Sommet_g()
+{
+    Sommet_g retour(m_nom);
+    return retour;
+}
 
 /***************************************************
                     ARETE
@@ -163,7 +167,11 @@ void Arete::post_update()
     m_poids = m_interface->m_slider_weight.get_value();
 }
 
-
+Arete_g Arete::to_Arete_g()
+{
+    Arete_g retour(m_sommet_d, m_sommet_a, m_poids);
+    return retour;
+}
 
 /***************************************************
                     GRAPHE
@@ -185,6 +193,23 @@ GrapheInterface::GrapheInterface(int x, int y, int w, int h)
     m_main_box.set_dim(908,720);
     m_main_box.set_gravity_xy(grman::GravityX::Right, grman::GravityY::Up);
     m_main_box.set_bg_color(BLANCJAUNE);
+
+    //Bouton pour la tool barre
+    m_tool_box.add_child(m_ajout);
+    m_ajout.set_frame(2,2,80,70);
+    m_ajout.set_bg_color(BLEUCLAIR);
+
+    m_tool_box.add_child(m_nomAjout);
+    m_nomAjout.set_pos(1,38);
+    m_nomAjout.set_message("Ajout");
+
+    m_tool_box.add_child(m_suppr);
+    m_suppr.set_frame(4,4,160,140);
+    m_suppr.set_bg_color(BLEUCLAIR);
+
+    m_tool_box.add_child(m_nomSuppr);
+    m_nomSuppr.set_pos(5,45);
+    m_nomSuppr.set_message("Suppression");
 }
 
 
@@ -272,10 +297,36 @@ void Graphe::SaveFile()
 
 void Graphe::reguPopulation()
 {
-    for(auto &elem : m_sommets)
+    //Boucle pour parcourir les sommets
+    for(auto &elemS : m_sommets)
     {
-        elem.second.m_value = elem.second.m_value + 5 * elem.second.m_value * (1-elem.second.m_value/4);
+        //Boucle pour parcourir les aretes
+        for(auto &elemA : m_aretes)
+        {
+            if(elemA.second.m_sommet_d == elemS.first)
+            {
+                if(elemS.second.m_value > m_sommets[elemA.second.m_sommet_a].m_value)
+                {
+                    elemS.second.m_value += (- elemA.second.m_poids);
+                }
 
+                if(elemS.second.m_value < m_sommets[elemA.second.m_sommet_a].m_value)
+                {
+                    elemS.second.m_value += (+ elemA.second.m_poids);
+                    elemA.second.m_poids += (- elemS.second.m_value);
+                }
+            }
+            //Condition pour blinder le nombre minimum à 0
+            if(elemS.second.m_value < 0)
+            {
+                elemS.second.m_value = 0;
+            }
+            ////Condition pour blinder le nombre maximum à 100
+            if(elemS.second.m_value > 100)
+            {
+                elemS.second.m_value = 100;
+            }
+        }
     }
 }
 
@@ -299,6 +350,8 @@ void Graphe::update()
     for (auto &elt : m_aretes)
         elt.second.post_update();
 
+    //Affichage pour l'etudes des graphes
+    std::cout << to_Graphe_g().K_arete_Conex(5)<<std::endl;
     /*//Ajoute un
     if(buttonAJout)*/
 
@@ -485,3 +538,19 @@ void Graphe::menu()
 
 }
 
+
+//Fonctions pour l'etude des graphes
+Graphe_g Graphe::to_Graphe_g()
+{
+    std::vector <Sommet_g> sommet;
+    std::vector <Arete_g> arete;
+
+    for(auto elem : m_sommets) sommet.push_back(elem.second.to_Sommet_g());
+    for(auto elem : m_aretes) arete.push_back(elem.second.to_Arete_g());
+
+    Graphe_g retour (arete, sommet);
+    retour.Setsuc();
+    retour.Reinit_marque();
+
+    return retour;
+}
