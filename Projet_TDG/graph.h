@@ -85,6 +85,7 @@
 #include <stdlib.h>
 
 #include "grman/grman.h"
+#include "grman/widget.h"
 
 /***************************************************
                     VERTEX
@@ -375,6 +376,9 @@ class Graphe
 
         /// La méthode update à appeler dans la boucle de jeu pour les graphes avec interface
         void update();
+
+        // Fonction créant la side bar d'option dans le menu de gauche
+        void side_bar();
 };
 
 

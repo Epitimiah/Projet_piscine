@@ -301,6 +301,7 @@ void Graphe::update()
 
     /*//Ajoute un
     if(buttonAJout)*/
+    side_bar();
 
 
 }
@@ -483,5 +484,55 @@ void Graphe::menu()
         grman::mettre_a_jour();
     }
 
+}
+
+void Graphe::side_bar()
+{
+    int x = 30;
+    int y = 30;
+    int espace_x = 65;
+    int espace_y_case = 50;
+    int espace_y_entre_case = 30;
+    int texte_x_espace = 5;
+    int texte_y_espace = 10;
+
+    BITMAP* buffer;
+    buffer = create_bitmap(800,600);
+
+    rectfill(buffer, x, y,  x + espace_x, y + espace_y_case, makecol(255,0,0));
+    rectfill(buffer, x, y + espace_y_case + espace_y_entre_case,  x + espace_x, y + espace_y_case*2 + espace_y_entre_case, makecol(255,0,0));
+    rectfill(buffer, x, y + espace_y_case*3 + espace_y_entre_case*2,  x + espace_x, y + espace_y_case*3 + espace_y_entre_case*2, makecol(255,0,0));
+
+    //texte
+    textprintf_ex(buffer, font, x+ texte_x_espace, y + texte_y_espace, makecol(255,255,255), -1, "Ajouter");
+    textprintf_ex(buffer, font, x+ texte_x_espace, y + texte_y_espace*3, makecol(255,255,255), -1, "Sommet");
+
+    textprintf_ex(buffer, font, x+ texte_x_espace, y + texte_y_espace + espace_y_case + espace_y_entre_case, makecol(255,255,255), -1, "Ajouter");
+    textprintf_ex(buffer, font, x+ texte_x_espace, y + texte_y_espace*3 + espace_y_case + espace_y_entre_case, makecol(255,255,255), -1, "Arete");
+
+    textprintf_ex(buffer, font, x+ texte_x_espace, y + texte_y_espace + (espace_y_case + espace_y_entre_case)*2, makecol(255,255,255), -1, "Menu");
+
+    //Boucles pour savoir où l'utilisateur appuie et ainsi charger le graphe correspondant
+    if(mouse_b&1)
+    {
+        if(mouse_x > x && mouse_x < x + espace_x)
+        {
+            if(mouse_y > y && mouse_y < y + espace_y_case)
+            {
+                //ajouter un sommet
+            }
+
+            if(mouse_y > y + (espace_y_case + espace_y_entre_case) && mouse_y < y + 130)
+            {
+                //ajouter une arete
+            }
+
+            if(mouse_y > y + (espace_y_case + espace_y_entre_case)*2 && mouse_y < y + 210)
+            {
+                //revenir au menu
+            }
+        }
+    }
+    blit(buffer, screen, 0, 0, 0, 0,  SCREEN_W, SCREEN_H);
 }
 
