@@ -185,6 +185,23 @@ GrapheInterface::GrapheInterface(int x, int y, int w, int h)
     m_main_box.set_dim(908,720);
     m_main_box.set_gravity_xy(grman::GravityX::Right, grman::GravityY::Up);
     m_main_box.set_bg_color(BLANCJAUNE);
+
+    //Bouton pour la tool barre
+    m_tool_box.add_child(m_ajout);
+    m_ajout.set_frame(2,2,80,70);
+    m_ajout.set_bg_color(BLEUCLAIR);
+
+    m_tool_box.add_child(m_nomAjout);
+    m_nomAjout.set_pos(1,38);
+    m_nomAjout.set_message("Ajout");
+
+    m_tool_box.add_child(m_suppr);
+    m_suppr.set_frame(4,4,160,140);
+    m_suppr.set_bg_color(BLEUCLAIR);
+
+    m_tool_box.add_child(m_nomSuppr);
+    m_nomSuppr.set_pos(5,45);
+    m_nomSuppr.set_message("Suppression");
 }
 
 
@@ -272,10 +289,36 @@ void Graphe::SaveFile()
 
 void Graphe::reguPopulation()
 {
-    for(auto &elem : m_sommets)
+    //Boucle pour parcourir les sommets
+    for(auto &elemS : m_sommets)
     {
-        elem.second.m_value = elem.second.m_value + 5 * elem.second.m_value * (1-elem.second.m_value/4);
+        //Boucle pour parcourir les aretes
+        for(auto &elemA : m_aretes)
+        {
+            if(elemA.second.m_sommet_d == elemS.first)
+            {
+                if(elemS.second.m_value > m_sommets[elemA.second.m_sommet_a].m_value)
+                {
+                    elemS.second.m_value(elemS.second.m_value - elemA.second.m_poids);
+                }
 
+                if(elemS.second.m_value < m_sommets[elemA.second.m_sommet_a].m_value)
+                {
+                    elemS.second.m_value(elemS.second.m_value + elemA.second.m_poids);
+                    elemA.second.m_value(elemA.second.m_value - elemS.second.m_poids);
+                }
+            }
+            //Condition pour blinder le nombre minimum à 0
+            if(elemS.second.m_value < 0)
+            {
+                elemS.second.m_value(0);
+            }
+            ////Condition pour blinder le nombre maximum à 100
+            if(elemS.second.m_value > 100)
+            {
+                elemS.second.m_value = 100;
+            }
+        }
     }
 }
 

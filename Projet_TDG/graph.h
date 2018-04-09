@@ -315,6 +315,12 @@ class GrapheInterface
         /// Dans cette boite seront ajoutés des boutons de contrôle etc...
         grman::WidgetBox m_tool_box;
 
+        grman::WidgetButton m_ajout;
+        grman::WidgetText m_nomAjout;
+
+        grman::WidgetButton m_suppr;
+        grman::WidgetText m_nomSuppr;
+
 
         // A compléter éventuellement par des widgets de décoration ou
         // d'édition (boutons ajouter/enlever ...)
