@@ -5,19 +5,16 @@
 
 int main()
 {
-
-
-    //g.delete_arete(2); ///Vouée à ne plus etre là
-    //g.delete_sommet(3); ///Same
-
     /// Vous gardez la main sur la "boucle de jeu"
     /// ( contrairement à des frameworks plus avancés )
     while ( !key[KEY_ESC] )
     {
+        //On declare un graphe
         Graphe g;
+        //On appelle la fonctione menu pour faire charger les fichers de graphe
         g.menu();
+        //Un petit rest pour rendre l'affichage plus propre
         rest(20);
-
     }
 
     grman::fermer_allegro();

@@ -323,39 +323,39 @@ class GrapheInterface
         /// Dans cette boite seront ajoutés des boutons de contrôle etc...
         grman::WidgetBox m_tool_box;
 
-        //Bouton pour le retour au menu
+        //Bouton et texte pour le retour au menu
         grman::WidgetButton m_goBack;
         grman::WidgetText m_nomGoBack;
 
-        //Bouton d'ajout de sommet
+        //Bouton et texte d'ajout de sommet
         grman::WidgetButton m_ajoutSommet;
         grman::WidgetText m_nomAjoutSommet;
 
-        //Bouton de suppression de sommet
+        //Bouton et texte de suppression de sommet
         grman::WidgetButton m_supprSommet;
         grman::WidgetText m_nomSupprSommet;
 
-        //Bouton d'ajout d'arete
+        //Bouton et texte d'ajout d'arete
         grman::WidgetButton m_ajoutArete;
         grman::WidgetText m_nomAjoutArete;
 
-        //Bouton de suppression d'arete
+        //Bouton et texte de suppression d'arete
         grman::WidgetButton m_supprArete;
         grman::WidgetText m_nomSupprArete;
 
-        //Bouton pour la regulation de population
+        //Bouton et texte pour la regulation de population
         grman::WidgetButton m_reguPopu;
         grman::WidgetText m_nomReguPopu;
 
-        //Bouton pour les composantes connexes
+        //Bouton et texte pour les composantes connexes
         grman::WidgetButton m_composantesCo;
         grman::WidgetText m_nomComposantesCo;
 
-        //Bouton pour la k connexité
+        //Bouton et texte pour la k connexité
         grman::WidgetButton m_kCo;
         grman::WidgetText m_nomKCo;
 
-        //Bouton pour les composantes fortement connexes
+        //Bouton et texte pour les composantes fortement connexes
         grman::WidgetButton m_composantesFCo;
         grman::WidgetText m_nomComposantesFCo;
 
@@ -393,6 +393,7 @@ class Graphe
 
         //Destructeur
         ~Graphe();
+
         //Methodes
 
         void add_interfaced_sommet(int idx, double value, int x, int y, std::string pic_name="", int pic_idx=0 );
