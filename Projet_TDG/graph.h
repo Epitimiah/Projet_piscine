@@ -148,6 +148,7 @@ class Sommet
         int m_nbr_arete;
         int m_pos_x;
         int m_pos_y;
+        int m_groupe;
 
         /// liste des indices des arcs arrivant au sommet : accès aux prédécesseurs
         std::vector<int> m_in;
@@ -189,6 +190,9 @@ class Sommet
 
         int getNb_arete() { return m_nbr_arete; }
         void setNb_arete(int nombre_arete) { m_nbr_arete = nombre_arete; }
+
+        int getgroupe() { return m_groupe; }
+        void setgroupe(int val) { m_groupe = val; }
 
         int getPos_x() { return m_pos_x; }
         void setPos_x(int position_x) { m_pos_x = position_x; }
