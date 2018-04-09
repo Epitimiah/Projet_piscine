@@ -421,13 +421,10 @@ void Graphe::menu()
     BITMAP* buffer;
     buffer = create_bitmap(800,600);
 
-    //Afficher notre fond
-    //Aficher 3 case pour chaque graphe
-
-    //fct pr recuperer notre graph
+    //Fonciton pour recuperer notre graphe
     while(name == "" &&  !key[KEY_ESC] )
     {
-        //jolie cases
+        //Case pour choisir le graphe voulu
         rectfill(buffer, x, y,  x + espace_x, y + espace_y_case, makecol(255,0,0));
         rectfill(buffer, x, y + espace_y_case + espace_y_entre_case,  x + espace_x, y + espace_y_case*2 + espace_y_entre_case, makecol(255,0,0));
         rectfill(buffer, x, y + espace_y_case*2 + espace_y_entre_case*2,  x + espace_x, y + espace_y_case*3 + espace_y_entre_case*2, makecol(255,0,0));
@@ -439,9 +436,6 @@ void Graphe::menu()
 
         if(mouse_b&1)
         {
-            std::cout << "X : " << mouse_x << " & Y : " <<  mouse_y << "\n";
-            std::cout<< "Mon nom : " << name << "\n";
-
             if(mouse_x > x && mouse_x < x + espace_x)
             {
                 if(mouse_y > y && mouse_y < y + espace_y_case)
@@ -449,7 +443,6 @@ void Graphe::menu()
                     name = "graph.txt";
                 }
 
-                ///A completer
                 if(mouse_y > y + 80 && mouse_y < y + 130)
                 {
                     name = "graph2.txt";
@@ -467,11 +460,6 @@ void Graphe::menu()
         clear(buffer);
         rest(20);
     }
-
-    //code pr demander
-
-    /// Un exemple de graphe
-
     LoadFile(name);
 
     SaveFile();
