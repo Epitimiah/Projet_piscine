@@ -195,6 +195,7 @@ GrapheInterface::GrapheInterface(int x, int y, int w, int h)
     m_main_box.set_bg_color(BLANCJAUNE);
 
     //Bouton pour la tool barre
+    //Bouton d'ajout sommet
     m_tool_box.add_child(m_ajout);
     m_ajout.set_frame(2,2,80,70);
     m_ajout.set_bg_color(BLEUCLAIR);
@@ -203,6 +204,16 @@ GrapheInterface::GrapheInterface(int x, int y, int w, int h)
     m_nomAjout.set_pos(1,38);
     m_nomAjout.set_message("Ajout");
 
+    //Bouton d'ajout arete
+    m_tool_box.add_child(m_ajout);
+    m_ajout.set_frame(2,2,80,70);
+    m_ajout.set_bg_color(BLEUCLAIR);
+
+    m_tool_box.add_child(m_nomAjout);
+    m_nomAjout.set_pos(1,38);
+    m_nomAjout.set_message("Ajout");
+
+    //Bouton de suppression sommet
     m_tool_box.add_child(m_suppr);
     m_suppr.set_frame(4,4,160,140);
     m_suppr.set_bg_color(BLEUCLAIR);
@@ -210,6 +221,45 @@ GrapheInterface::GrapheInterface(int x, int y, int w, int h)
     m_tool_box.add_child(m_nomSuppr);
     m_nomSuppr.set_pos(5,45);
     m_nomSuppr.set_message("Suppression");
+
+    //Bouton de suppression arete
+    m_tool_box.add_child(m_supprArete);
+    m_supprArete.set_frame(4,4,160,140);
+    m_supprArete.set_bg_color(BLEUCLAIR);
+
+    m_tool_box.add_child(m_nomSupprArete);
+    m_nomSupprArete.set_pos(5,45);
+    m_nomSupprArete.set_message("Suppression");
+
+    //Bouton pour la regulation de population
+    m_tool_box.add_child(m_reguPopu);
+    m_reguPopur.set_frame(4,4,160,140);
+    m_reguPopu.set_bg_color(BLEUCLAIR);
+
+    m_tool_box.add_child(m_nomReguPopu);
+    m_nomReguPopu.set_pos(5,45);
+    m_nomReguPopur.set_message("Suppression");
+
+    //Bouton pour afficher le nombre de composantes connexes
+    m_tool_box.add_child(m_composantesCo);
+    m_composantesCor.set_frame(4,4,160,140);
+    m_composantesCo.set_bg_color(BLEUCLAIR);
+
+    m_tool_box.add_child(m_nomComposantesCo);
+    m_nomComposantesCo.set_pos(5,45);
+    m_nomComposantesCo.set_message("Suppression");
+
+    //Bouton pour afficher la k connexité
+    m_tool_box.add_child(m_kCo);
+    m_kCo.set_frame(4,4,160,140);
+    m_kCo.set_bg_color(BLEUCLAIR);
+
+    m_tool_box.add_child(m_nomKCo);
+    m_nomKCo.set_pos(5,45);
+    m_nomKCo.set_message("Suppression");
+
+
+
 }
 
 

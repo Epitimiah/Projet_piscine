@@ -323,11 +323,25 @@ class GrapheInterface
         /// Dans cette boite seront ajoutés des boutons de contrôle etc...
         grman::WidgetBox m_tool_box;
 
-        grman::WidgetButton m_ajout;
-        grman::WidgetText m_nomAjout;
+        //Bouton d'ajout de sommet
+        grman::WidgetButton m_ajoutSommet;
+        grman::WidgetText m_nomAjoutSommet;
 
-        grman::WidgetButton m_suppr;
-        grman::WidgetText m_nomSuppr;
+        //Bouton de suppression de sommet
+        grman::WidgetButton m_supprSommet;
+        grman::WidgetText m_nomSupprSommet;
+
+        //Bouton d'ajout d'arete
+        grman::WidgetButton m_ajoutArete;
+        grman::WidgetText m_nomAjoutArete;
+
+        //Bouton de suppression d'arete
+        grman::WidgetButton m_supprArete;
+        grman::WidgetText m_nomSupprArete;
+
+        //Bouton pour la k connexité
+        grman::WidgetButton m_kCo;
+        grman::WidgetText m_nomKCo;
 
 
         // A compléter éventuellement par des widgets de décoration ou
