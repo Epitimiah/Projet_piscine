@@ -1,48 +1,27 @@
+#include "grman/grman.h"
 #include <iostream>
-#include <stdio.h>
-#include <cstdlib>
-#include <stdlib.h>
 
-
-#include "Graphe.h"
-
-using namespace std;
+#include "graph.h"
 
 int main()
 {
-    allegro_init();
-    bool done1 = false;
-    bool done2 = false;
-    std::string NameFile;
-    Graphe * test;
-    test = new Graphe;
+    Graphe g;
 
-    /// Ici nous demandons le nom du fichier texte à ouvrir.
-    std::cout << "Veuillez nous indiquez le nom du fichier a ouvrir : " << std::endl;
-    std::cin >> NameFile;
-    done1 = test->LoadFile(NameFile);
-    while (done1 == false)
+    //g.delete_arete(2); ///Vouée à ne plus etre là
+    //g.delete_sommet(3); ///Same
+
+    /// Vous gardez la main sur la "boucle de jeu"
+    /// ( contrairement à des frameworks plus avancés )
+    while ( !key[KEY_ESC] )
     {
-        std::cout << "Veuillez nous indiquez le nom du fichier a ouvrir : " << std::endl;
-        std::cin >> NameFile;
-        done1 = test->LoadFile(NameFile);
+        g.menu();
+
     }
 
-    cout << "Hello world!" << endl;
+    grman::fermer_allegro();
 
-    test->DisplayChaine();
-
-    std::cout << "Veuillez nous indiquez le nom du fichier a sauvegarder : " << std::endl;
-    std::cin >> NameFile;
-    done2 = test->SaveFile(NameFile);
-    while (done2 == false)
-    {
-        std::cout << "Veuillez nous indiquez le nom du fichier a sauvegarder : " << std::endl;
-        std::cin >> NameFile;
-        done2 = test->SaveFile(NameFile);
-    }
-
-    delete test;
     return 0;
 }
 END_OF_MAIN();
+
+
