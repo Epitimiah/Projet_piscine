@@ -54,7 +54,6 @@ void Graphe_g::F_Conex(int idx, int groupe)
 {
     m_sommet[idx].Setmarque_m(true);
     m_sommet[idx].Setmarque_p(true);
-    std::cout << "cc" << std::endl;
 
     for(unsigned int i=0; i<m_arete.size(); i++)
     {
@@ -77,9 +76,10 @@ void Graphe_g::F_Conex(int idx, int groupe)
     }
 }
 
-int Graphe_g::Composantes_connex()
+std::vector <int> Graphe_g::Composantes_connex()
 {
     Reinit_marque();
+    std::vector <int> retour;
     int groupe=0;
     for (unsigned int i=0; i<m_sommet.size(); i++)
     {
@@ -89,11 +89,14 @@ int Graphe_g::Composantes_connex()
             DFS(i,groupe);
         }
     }
-    return groupe;
+    retour.push_back(groupe);
+    for(auto elem : m_sommet)retour.push_back(elem.m_groupe);
+    return retour;
 }
 
-int Graphe_g::Composantes_F_connex()
+std::vector <int> Graphe_g::Composantes_F_connex()
 {
+    std::vector <int> retour;
     int groupe=0;
     for (unsigned int i=0; i<m_sommet.size(); i++)
     {
@@ -104,7 +107,8 @@ int Graphe_g::Composantes_F_connex()
         }
     }
     Reinit_marque();
-    return groupe;
+    for (auto elem : m_sommet)retour.push_back(elem.m_groupe_F);
+    return retour;
 }
 
 std::vector<int> Graphe_g::Combinaison_arete(int K)
@@ -150,7 +154,7 @@ bool Graphe_g::Est_connex(std::vector <int> Arete_a_enlever)
     std::cout << "SOMMET : ";
     for( auto elem : copie.m_sommet ) std::cout << elem.m_en_lien.size() << " ";
     std::cout << std::endl;
-    if (copie.Composantes_connex()==1)return true;
+    if (copie.Composantes_connex()[0]==1)return true;
     return false;
 }
 
@@ -161,7 +165,7 @@ int Graphe_g::K_arete_Conex(int limite)
     std::vector <int> retour;
     int j=0;
     Reinit_marque();
-    if(Composantes_connex()!=1)return 0;
+    if(Composantes_connex()[0]!=1)return 0;
     Reinit_marque();
     for(int i=1; i<=limite; i++)
     {

@@ -27,9 +27,9 @@ public :
     void Enlever_arrete(int idx);
 
     void DFS(int idx, int groupe);
-    int Composantes_connex();
+    std::vector <int> Composantes_connex();
     void F_Conex(int idx, int groupe);
-    int Composantes_F_connex();
+    std::vector <int> Composantes_F_connex();
     bool Est_connex(std::vector <int> Arete_a_enlever);
     std::vector<int> Combinaison_arete(int nbr);
     int K_arete_Conex(int limite);

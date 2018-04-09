@@ -463,16 +463,20 @@ void Graphe::update()
     {
         reguPopulation();
     }
-/*
+
     if(m_interface->m_composantesCo.clicked())
     {
-        for(auto elem : m_sommets)std::cout << elem.first << " : " <<elem.second.m_groupe << std::endl;
+        Composante_connexe();
+        for(auto elem : m_sommets)std::cout << elem.first << " : " <<elem.second.getgroupe() << std::endl;
+        m_interface->m_composantesCo.set_value(false);
     }
 
     if(m_interface->m_composantesFCo.clicked())
     {
-        ///Paul met le code ici
-    }*/
+        Composante_F_connexe();
+        for(auto elem : m_sommets)std::cout << elem.first << " : " <<elem.second.getgroupe() << std::endl;
+        m_interface->m_composantesCo.set_value(false);
+    }
 
     if(m_interface->m_kCo.clicked())
     {
@@ -684,12 +688,12 @@ Graphe_g Graphe::to_Graphe_g()
     return retour;
 }
 
-/*
+
 void Graphe::Composante_connexe()
 {
     std::vector <int> groupe = to_Graphe_g().Composantes_connex();
     int i=1;
-    for ( auto elem : m_sommets )
+    for ( auto &elem : m_sommets )
     {
         elem.second.setgroupe(groupe[i]);
         i++;
@@ -700,9 +704,9 @@ void Graphe::Composante_F_connexe()
 {
     std::vector <int> groupe = to_Graphe_g().Composantes_F_connex();
     int i=0;
-    for ( auto elem : m_sommets )
+    for ( auto &elem : m_sommets )
     {
         elem.second.setgroupe(groupe[i]);
         i++;
     }
-}*/
+}
