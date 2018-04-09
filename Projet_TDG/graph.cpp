@@ -376,7 +376,7 @@ void Graphe::reguPopulation()
                 if(elemS.second.m_value < m_sommets[elemA.second.m_sommet_a].m_value)
                 {
                     elemS.second.m_value += (+ elemA.second.m_poids);
-                    elemA.second.m_poids += (- elemS.second.m_value);
+                    m_sommets[elemA.second.m_sommet_a].m_value += (- elemA.second.m_poids);
                 }
             }
             //Condition pour blinder le nombre minimum à 0
@@ -417,15 +417,12 @@ void Graphe::update()
     //std::cout << to_Graphe_g().K_arete_Conex(5)<<std::endl;
 
     //Code pour que les boutons soient fonctionnels
-    m_interface->m_ajoutSommet.interact_focus();
-    if(m_interface->m_ajoutSommet.get_value() == true)
+    if(m_interface->m_ajoutSommet.clicked())
     {
-        add_interfaced_sommet(m_sommets.size(), 15, 500, 500, "pics/lion.jpg", 1);
-        m_interface->m_ajoutSommet.set_value(false);
+        add_interfaced_sommet(m_sommets.size(), 15, 500, 500, "lion.jpg", 1);
     }
 
-    m_interface->m_ajoutArete.interact_focus();
-    if(m_interface->m_ajoutArete.get_value() == true)
+    if(m_interface->m_ajoutArete.clicked())
     {
         int a = 0, b = 0, p = 0;
         std::cout << "Sommet de depart : " << std::endl;
@@ -435,54 +432,39 @@ void Graphe::update()
         std::cout << "Poids de l'arete : " << std::endl;
         std::cin >> p;
         add_interfaced_arete(m_aretes.size(), a, b, p);
-
-        m_interface->m_ajoutArete.set_value(false);
     }
 
-    m_interface->m_supprSommet.interact_focus();
-    if(m_interface->m_supprSommet.get_value() == true)
+    if(m_interface->m_supprSommet.clicked())
     {
         int indice = 0;
         std::cout << "Quel est l'indice du sommet que vous voulez supprimer?" << std::endl;
         std::cin >> indice;
         delete_sommet(indice);
-
-        m_interface->m_supprSommet.set_value(false);
     }
 
-    m_interface->m_supprArete.interact_focus();
-    if(m_interface->m_supprArete.get_value() == true)
+    if(m_interface->m_supprArete.clicked())
     {
         int indiceA = 0;
         std::cout << "Quel est l'indice de l'arete que vous voulez supprimer?" << std::endl;
         std::cin >> indiceA;
         delete_arete(indiceA);
-
-        m_interface->m_supprArete.set_value(false);
     }
 
-    m_interface->m_reguPopu.interact_focus();
-    if(m_interface->m_reguPopu.get_value() == true)
+    if(m_interface->m_reguPopu.clicked())
     {
         reguPopulation();
-
-        m_interface->m_reguPopu.set_value(false);
     }
 
-    m_interface->m_composantesCo.interact_focus();
-    if(m_interface->m_composantesCo.get_value() == true)
+    if(m_interface->m_composantesCo.clicked())
     {
         //code de paul
 
-        m_interface->m_composantesCo.set_value(false);
+
     }
 
-    m_interface->m_kCo.interact_focus();
-    if(m_interface->m_kCo.get_value() == true)
+    if(m_interface->m_kCo.clicked())
     {
         //code de paul
-
-        m_interface->m_kCo.set_value(false);
     }
 
 
