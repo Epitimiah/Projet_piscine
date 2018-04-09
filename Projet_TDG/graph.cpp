@@ -230,47 +230,56 @@ GrapheInterface::GrapheInterface(int x, int y, int w, int h)
 
     //Bouton de suppression sommet
     m_tool_box.add_child(m_supprSommet);
-    m_supprSommet.set_frame(10,200,50,50);
+    m_supprSommet.set_frame(10,175,50,50);
     m_supprSommet.set_bg_color(BLEUCLAIR);
 
     m_tool_box.add_child(m_nomSupprSommet);
-    m_nomSupprSommet.set_pos(1,215);
+    m_nomSupprSommet.set_pos(1,200);
     m_nomSupprSommet.set_message("Suppr S");
 
     //Bouton de suppression arete
     m_tool_box.add_child(m_supprArete);
-    m_supprArete.set_frame(10,300,50,50);
+    m_supprArete.set_frame(10,250,50,50);
     m_supprArete.set_bg_color(BLEUCLAIR);
 
     m_tool_box.add_child(m_nomSupprArete);
-    m_nomSupprArete.set_pos(1,315);
+    m_nomSupprArete.set_pos(1,275);
     m_nomSupprArete.set_message("Suppr A");
 
     //Bouton pour la regulation de population
     m_tool_box.add_child(m_reguPopu);
-    m_reguPopu.set_frame(10,400,50,50);
+    m_reguPopu.set_frame(10,325,50,50);
     m_reguPopu.set_bg_color(BLEUCLAIR);
 
     m_tool_box.add_child(m_nomReguPopu);
-    m_nomReguPopu.set_pos(1,415);
+    m_nomReguPopu.set_pos(1,350);
     m_nomReguPopu.set_message("Regu pop");
 
     //Bouton pour afficher le nombre de composantes connexes
     m_tool_box.add_child(m_composantesCo);
-    m_composantesCo.set_frame(10,500,50,50);
+    m_composantesCo.set_frame(10,400,50,50);
     m_composantesCo.set_bg_color(BLEUCLAIR);
 
     m_tool_box.add_child(m_nomComposantesCo);
-    m_nomComposantesCo.set_pos(1,515);
+    m_nomComposantesCo.set_pos(1,415);
     m_nomComposantesCo.set_message("Compo co");
+
+    //Bouton pour afficher le nombre de composantes fortement connexes
+    m_tool_box.add_child(m_composantesFCo);
+    m_composantesFCo.set_frame(10,475,50,50);
+    m_composantesFCo.set_bg_color(BLEUCLAIR);
+
+    m_tool_box.add_child(m_nomComposantesFCo);
+    m_nomComposantesFCo.set_pos(1,500);
+    m_nomComposantesFCo.set_message("Compo F co");
 
     //Bouton pour afficher la k connexité
     m_tool_box.add_child(m_kCo);
-    m_kCo.set_frame(10,600,50,50);
+    m_kCo.set_frame(10,550,50,50);
     m_kCo.set_bg_color(BLEUCLAIR);
 
     m_tool_box.add_child(m_nomKCo);
-    m_nomKCo.set_pos(1,615);
+    m_nomKCo.set_pos(1,575);
     m_nomKCo.set_message("k-connexite");
 
 }
@@ -457,14 +466,12 @@ void Graphe::update()
 
     if(m_interface->m_composantesCo.clicked())
     {
-        //code de paul
-
-
+        for(auto elem : m_sommets)std::cout << elem.first << " : " <<elem.second.m_groupe << std::endl;
     }
 
     if(m_interface->m_kCo.clicked())
     {
-        //code de paul
+        std::cout << "Ce graphe est " <<to_Graphe_g().K_arete_Conex(5) <<"-arete conexe."<< std::endl;
     }
 
 
@@ -565,11 +572,6 @@ void Graphe::delete_sommet(int indice)
     m_sommets.erase(indice);
 }
 
-void Graphe::toolBarre()
-{
-    //rectfill
-}
-
 
 void Graphe::menu()
 {
@@ -634,8 +636,7 @@ void Graphe::menu()
     }
     //On charge le fichier du graphe choisi
     LoadFile(name);
-    //On affiche tous les boutons nécessaire
-    ///toolBarre();
+
     //On sauvegarde le graphe dans un autre fichier particulier à la sauvegarde
     SaveFile();
 
@@ -680,4 +681,27 @@ Graphe_g Graphe::to_Graphe_g()
     //on reflechie la
 
     return retour;
+}
+
+
+void Graphe::Composante_connexe()
+{
+    std::vector <int> groupe = to_Graphe_g().Composantes_connex();
+    int i=1;
+    for ( auto elem : m_sommets )
+    {
+        elem.second.setgroupe(groupe[i]);
+        i++;
+    }
+}
+
+void Graphe::Composante_F_connexe()
+{
+    std::vector <int> groupe = to_Graphe_g().Composantes_F_connex();
+    int i=0;
+    for ( auto elem : m_sommets )
+    {
+        elem.second.setgroupe(groupe[i]);
+        i++;
+    }
 }

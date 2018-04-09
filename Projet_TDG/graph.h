@@ -355,6 +355,10 @@ class GrapheInterface
         grman::WidgetButton m_kCo;
         grman::WidgetText m_nomKCo;
 
+        //Bouton pour les composantes fortement connexes
+        grman::WidgetButton m_composantesFCo;
+        grman::WidgetText m_nomComposantesFCo;
+
     public :
 
         // Le constructeur met en place les éléments de l'interface
@@ -404,16 +408,20 @@ class Graphe
         //Fonction qui supprime les sommets
         void delete_sommet(int indice);
 
-        //Fonction qui permet d'avoir des boutons à l'ecran pour les differentes fonctions telles que la suppression ou l'ajout
-        void toolBarre();
         //Fonction qui permet de faire apparaitre un menu pour choisir entre les 3 grahes
         void menu();
+
+        //Fonction pour detecter les composantes connexes
+        void Composante_connexe();
+        //Fonction pour detecter les composantes fortement connexes
+        void Composante_F_connexe();
 
         //Fonction pour l'etude des graphes
         Graphe_g to_Graphe_g();
 
         /// La méthode update à appeler dans la boucle de jeu pour les graphes avec interface
         void update();
+
 };
 
 
