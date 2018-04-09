@@ -463,11 +463,16 @@ void Graphe::update()
     {
         reguPopulation();
     }
-
+/*
     if(m_interface->m_composantesCo.clicked())
     {
         for(auto elem : m_sommets)std::cout << elem.first << " : " <<elem.second.m_groupe << std::endl;
     }
+
+    if(m_interface->m_composantesFCo.clicked())
+    {
+        ///Paul met le code ici
+    }*/
 
     if(m_interface->m_kCo.clicked())
     {
@@ -679,6 +684,7 @@ Graphe_g Graphe::to_Graphe_g()
     return retour;
 }
 
+/*
 void Graphe::Composante_connexe()
 {
     std::vector <int> groupe = to_Graphe_g().Composantes_connex();
@@ -699,4 +705,4 @@ void Graphe::Composante_F_connexe()
         elem.second.setgroupe(groupe[i]);
         i++;
     }
-}
+}*/
