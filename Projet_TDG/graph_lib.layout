@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<FileVersion major="1" minor="0" />
+	<ActiveTarget name="Release" />
+	<File name="grman\widget.h" open="0" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="-4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="11338" topLine="306" />
+		</Cursor>
+		<Folding>
+			<Collapse line="15" />
+			<Collapse line="19" />
+			<Collapse line="26" />
+		</Folding>
+	</File>
+	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="99" topLine="1" />
+		</Cursor>
+	</File>
+	<File name="graph.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="14361" topLine="221" />
+		</Cursor>
+		<Folding>
+			<Collapse line="94" />
+			<Collapse line="214" />
+			<Collapse line="247" />
+			<Collapse line="303" />
+		</Folding>
+	</File>
+	<File name="grman\coords.cpp" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="grman\grman.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="-6" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="90" />
+		</Cursor>
+	</File>
+	<File name="grman\grman.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="-5" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2991" topLine="12" />
+		</Cursor>
+	</File>
+	<File name="grman\coords.h" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="grman\grman_couleurs.h" open="0" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="-4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Graphe.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3386" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="25" />
+			<Collapse line="33" />
+			<Collapse line="43" />
+			<Collapse line="53" />
+			<Collapse line="80" />
+			<Collapse line="95" />
+			<Collapse line="110" />
+			<Collapse line="157" />
+		</Folding>
+	</File>
+	<File name="grman\widget.cpp" open="0" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="-5" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="6033" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="graph.cpp" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="9023" topLine="130" />
+		</Cursor>
+		<Folding>
+			<Collapse line="8" />
+			<Collapse line="44" />
+			<Collapse line="48" />
+			<Collapse line="52" />
+			<Collapse line="66" />
+			<Collapse line="71" />
+			<Collapse line="85" />
+			<Collapse line="94" />
+			<Collapse line="105" />
+			<Collapse line="134" />
+			<Collapse line="138" />
+			<Collapse line="142" />
+			<Collapse line="148" />
+			<Collapse line="161" />
+			<Collapse line="172" />
+			<Collapse line="184" />
+			<Collapse line="201" />
+			<Collapse line="246" />
+			<Collapse line="283" />
+			<Collapse line="320" />
+			<Collapse line="336" />
+			<Collapse line="362" />
+			<Collapse line="393" />
+			<Collapse line="414" />
+			<Collapse line="420" />
+			<Collapse line="499" />
+		</Folding>
+	</File>
+	<File name="Arete.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="93" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Sommet.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="184" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Sommet.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="711" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Arete.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="58" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Graphe.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="140" topLine="0" />
+		</Cursor>
+	</File>
+</CodeBlocks_layout_file>

@@ -1,0 +1,9 @@
+14
+7
+goat.bmp 20 500 500
+jackal.bmp 15 400 400
+lion.bmp 30 300 300
+lynx.bmp 10 200 200
+mouse.bmp 50 100 100
+kite.bmp 20 50 50
+rabbit.bmp 5 5 5

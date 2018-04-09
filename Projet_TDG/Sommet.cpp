@@ -1,10 +1,10 @@
 #include "Sommet.h"
 
-Sommet::Sommet()
+Sommet_g::Sommet_g() : m_groupe(0), m_groupe_F(0),m_marque_p(false),m_marque_m(false), m_marque(false)
 {   }
 
-Sommet::Sommet(std::string nom, int nombre_arete, int position_x, int position_y) : m_nom(nom), m_nbr_arete(nombre_arete), m_pos_x(position_x), m_pos_y(position_y)
+Sommet_g::Sommet_g(std::string nom) : m_nom(nom), m_groupe(0), m_groupe_F(0),m_marque_p(false),m_marque_m(false), m_marque(false)
 {   }
 
-Sommet::~Sommet()
+Sommet_g::~Sommet_g()
 {   }
