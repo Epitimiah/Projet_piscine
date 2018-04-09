@@ -5,7 +5,7 @@
 
 int main()
 {
-    Graphe g;
+
 
     //g.delete_arete(2); ///Vouée à ne plus etre là
     //g.delete_sommet(3); ///Same
@@ -14,7 +14,10 @@ int main()
     /// ( contrairement à des frameworks plus avancés )
     while ( !key[KEY_ESC] )
     {
+        Graphe g;
         g.menu();
+        rest(20);
+
     }
 
     grman::fermer_allegro();
@@ -22,5 +25,3 @@ int main()
     return 0;
 }
 END_OF_MAIN();
-
-
