@@ -200,7 +200,7 @@ GrapheInterface::GrapheInterface(int x, int y, int w, int h)
     m_main_box.set_gravity_xy(grman::GravityX::Right, grman::GravityY::Up);
     m_main_box.set_bg_color(BLANCJAUNE);
 
-    ///Bouton pour la tool barre
+    ///Boutons pour la tool barre
     //Bouton retour au menu
     m_tool_box.add_child(m_goBack);
     m_goBack.set_frame(0, 750, 350, 10);
@@ -212,11 +212,11 @@ GrapheInterface::GrapheInterface(int x, int y, int w, int h)
 
     //Bouton d'ajout sommet
     m_tool_box.add_child(m_ajoutSommet);
-    m_ajoutSommet.set_frame(10,10,50,50);
+    m_ajoutSommet.set_frame(10,25,50,50);
     m_ajoutSommet.set_bg_color(BLEUCLAIR);
 
     m_tool_box.add_child(m_nomAjoutSommet);
-    m_nomAjoutSommet.set_pos(1,15);
+    m_nomAjoutSommet.set_pos(1,40);
     m_nomAjoutSommet.set_message("Ajouter S");
 
     //Bouton d'ajout arete
@@ -230,47 +230,56 @@ GrapheInterface::GrapheInterface(int x, int y, int w, int h)
 
     //Bouton de suppression sommet
     m_tool_box.add_child(m_supprSommet);
-    m_supprSommet.set_frame(10,200,50,50);
+    m_supprSommet.set_frame(10,175,50,50);
     m_supprSommet.set_bg_color(BLEUCLAIR);
 
     m_tool_box.add_child(m_nomSupprSommet);
-    m_nomSupprSommet.set_pos(1,215);
+    m_nomSupprSommet.set_pos(1,200);
     m_nomSupprSommet.set_message("Suppr S");
 
     //Bouton de suppression arete
     m_tool_box.add_child(m_supprArete);
-    m_supprArete.set_frame(10,300,50,50);
+    m_supprArete.set_frame(10,250,50,50);
     m_supprArete.set_bg_color(BLEUCLAIR);
 
     m_tool_box.add_child(m_nomSupprArete);
-    m_nomSupprArete.set_pos(1,315);
+    m_nomSupprArete.set_pos(1,275);
     m_nomSupprArete.set_message("Suppr A");
 
     //Bouton pour la regulation de population
     m_tool_box.add_child(m_reguPopu);
-    m_reguPopu.set_frame(10,400,50,50);
+    m_reguPopu.set_frame(10,325,50,50);
     m_reguPopu.set_bg_color(BLEUCLAIR);
 
     m_tool_box.add_child(m_nomReguPopu);
-    m_nomReguPopu.set_pos(1,415);
+    m_nomReguPopu.set_pos(1,340);
     m_nomReguPopu.set_message("Regu pop");
 
     //Bouton pour afficher le nombre de composantes connexes
     m_tool_box.add_child(m_composantesCo);
-    m_composantesCo.set_frame(10,500,50,50);
+    m_composantesCo.set_frame(10,400,50,50);
     m_composantesCo.set_bg_color(BLEUCLAIR);
 
     m_tool_box.add_child(m_nomComposantesCo);
-    m_nomComposantesCo.set_pos(1,515);
+    m_nomComposantesCo.set_pos(1,415);
     m_nomComposantesCo.set_message("Compo co");
+
+    //Bouton pour afficher le nombre de composantes fortement connexes
+    m_tool_box.add_child(m_composantesFCo);
+    m_composantesFCo.set_frame(10,475,50,50);
+    m_composantesFCo.set_bg_color(BLEUCLAIR);
+
+    m_tool_box.add_child(m_nomComposantesFCo);
+    m_nomComposantesFCo.set_pos(1,500);
+    m_nomComposantesFCo.set_message("Compo F co");
 
     //Bouton pour afficher la k connexité
     m_tool_box.add_child(m_kCo);
-    m_kCo.set_frame(10,600,50,50);
+    m_kCo.set_frame(10,550,50,50);
     m_kCo.set_bg_color(BLEUCLAIR);
 
     m_tool_box.add_child(m_nomKCo);
-    m_nomKCo.set_pos(1,615);
+    m_nomKCo.set_pos(1,575);
     m_nomKCo.set_message("k-connexite");
 
 }
@@ -454,20 +463,21 @@ void Graphe::update()
     {
         reguPopulation();
     }
-
+/*
     if(m_interface->m_composantesCo.clicked())
     {
-        //code de paul
-
-
+        for(auto elem : m_sommets)std::cout << elem.first << " : " <<elem.second.m_groupe << std::endl;
     }
+
+    if(m_interface->m_composantesFCo.clicked())
+    {
+        ///Paul met le code ici
+    }*/
 
     if(m_interface->m_kCo.clicked())
     {
-        //code de paul
+        std::cout << "Ce graphe est " <<to_Graphe_g().K_arete_Conex(5) <<"-arete conexe."<< std::endl;
     }
-
-
 }
 
 /// Aide à l'ajout de sommets interfacés
@@ -515,11 +525,10 @@ void Graphe::add_interfaced_arete(int idx, int id_vert1, int id_vert2, double po
 
 void Graphe::delete_arete(int indice)
 {
-
     ///Ecrire l'arete dans mon fichier cimetiere
-/// référence vers le Edge à enlever
+    /// référence vers le Edge à enlever
     Arete &remed=m_aretes.at(indice);
-/// test : on a bien des éléments interfacés
+    /// test : on a bien des éléments interfacés
     if (m_interface && remed.m_interface)
     {
         m_interface->m_main_box.remove_child( remed.m_interface->m_top_edge);
@@ -530,9 +539,9 @@ void Graphe::delete_arete(int indice)
         vefrom.erase( std::remove( vefrom.begin(), vefrom.end(),indice ), vefrom.end() );
         veto.erase( std::remove(veto.begin(),veto.end(),indice ), veto.end() );
 
-/// Le Edge ne nécessite pas non plus de delete car on n'a pas fait de new (sémantique par valeur)
-/// Il suffit donc de supprimer l'entrée de la map pour supprimer à la fois l'Edge et le EdgeInterface
-/// mais malheureusement ceci n'enlevait pas automatiquement l'interface top_edge en tant que child de main_box !
+        /// Le Edge ne nécessite pas non plus de delete car on n'a pas fait de new (sémantique par valeur)
+        /// Il suffit donc de supprimer l'entrée de la map pour supprimer à la fois l'Edge et le EdgeInterface
+        /// mais malheureusement ceci n'enlevait pas automatiquement l'interface top_edge en tant que child de main_box !
         m_aretes.erase(indice);
 
 ///// Tester la cohérence : nombre d'arc entrants et sortants des sommets 1 et 2
@@ -563,11 +572,6 @@ void Graphe::delete_sommet(int indice)
     }
 
     m_sommets.erase(indice);
-}
-
-void Graphe::toolBarre()
-{
-    //rectfill
 }
 
 
@@ -634,8 +638,7 @@ void Graphe::menu()
     }
     //On charge le fichier du graphe choisi
     LoadFile(name);
-    //On affiche tous les boutons nécessaire
-    ///toolBarre();
+
     //On sauvegarde le graphe dans un autre fichier particulier à la sauvegarde
     SaveFile();
 
@@ -651,11 +654,11 @@ void Graphe::menu()
 
             if(mouse_x > 0 && mouse_y < 750 && mouse_y > 800 && mouse_x < 50)
             {
-                if(mouse_b&1){
-
-                goBack = false;}
+                if(mouse_b&1)
+                {
+                    goBack = false;
+                }
             }
-
 
         /// Mise à jour générale (clavier/souris/buffer etc...)
         grman::mettre_a_jour();
@@ -677,7 +680,29 @@ Graphe_g Graphe::to_Graphe_g()
     Graphe_g retour (arete, sommet);
     retour.Setsuc();
     retour.Reinit_marque();
-    //on reflechie la
 
     return retour;
 }
+
+/*
+void Graphe::Composante_connexe()
+{
+    std::vector <int> groupe = to_Graphe_g().Composantes_connex();
+    int i=1;
+    for ( auto elem : m_sommets )
+    {
+        elem.second.setgroupe(groupe[i]);
+        i++;
+    }
+}
+
+void Graphe::Composante_F_connexe()
+{
+    std::vector <int> groupe = to_Graphe_g().Composantes_F_connex();
+    int i=0;
+    for ( auto elem : m_sommets )
+    {
+        elem.second.setgroupe(groupe[i]);
+        i++;
+    }
+}*/

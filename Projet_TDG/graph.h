@@ -323,37 +323,41 @@ class GrapheInterface
         /// Dans cette boite seront ajoutés des boutons de contrôle etc...
         grman::WidgetBox m_tool_box;
 
-        //Bouton pour le retour au menu
+        //Bouton et texte pour le retour au menu
         grman::WidgetButton m_goBack;
         grman::WidgetText m_nomGoBack;
 
-        //Bouton d'ajout de sommet
+        //Bouton et texte d'ajout de sommet
         grman::WidgetButton m_ajoutSommet;
         grman::WidgetText m_nomAjoutSommet;
 
-        //Bouton de suppression de sommet
+        //Bouton et texte de suppression de sommet
         grman::WidgetButton m_supprSommet;
         grman::WidgetText m_nomSupprSommet;
 
-        //Bouton d'ajout d'arete
+        //Bouton et texte d'ajout d'arete
         grman::WidgetButton m_ajoutArete;
         grman::WidgetText m_nomAjoutArete;
 
-        //Bouton de suppression d'arete
+        //Bouton et texte de suppression d'arete
         grman::WidgetButton m_supprArete;
         grman::WidgetText m_nomSupprArete;
 
-        //Bouton pour la regulation de population
+        //Bouton et texte pour la regulation de population
         grman::WidgetButton m_reguPopu;
         grman::WidgetText m_nomReguPopu;
 
-        //Bouton pour les composantes connexes
+        //Bouton et texte pour les composantes connexes
         grman::WidgetButton m_composantesCo;
         grman::WidgetText m_nomComposantesCo;
 
-        //Bouton pour la k connexité
+        //Bouton et texte pour la k connexité
         grman::WidgetButton m_kCo;
         grman::WidgetText m_nomKCo;
+
+        //Bouton et texte pour les composantes fortement connexes
+        grman::WidgetButton m_composantesFCo;
+        grman::WidgetText m_nomComposantesFCo;
 
     public :
 
@@ -389,6 +393,7 @@ class Graphe
 
         //Destructeur
         ~Graphe();
+
         //Methodes
 
         void add_interfaced_sommet(int idx, double value, int x, int y, std::string pic_name="", int pic_idx=0 );
@@ -404,16 +409,20 @@ class Graphe
         //Fonction qui supprime les sommets
         void delete_sommet(int indice);
 
-        //Fonction qui permet d'avoir des boutons à l'ecran pour les differentes fonctions telles que la suppression ou l'ajout
-        void toolBarre();
         //Fonction qui permet de faire apparaitre un menu pour choisir entre les 3 grahes
         void menu();
+
+        //Fonction pour detecter les composantes connexes
+        void Composante_connexe();
+        //Fonction pour detecter les composantes fortement connexes
+        void Composante_F_connexe();
 
         //Fonction pour l'etude des graphes
         Graphe_g to_Graphe_g();
 
         /// La méthode update à appeler dans la boucle de jeu pour les graphes avec interface
         void update();
+
 };
 
 
