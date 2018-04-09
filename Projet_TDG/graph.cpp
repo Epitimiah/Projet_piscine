@@ -1,6 +1,5 @@
 #include "graph.h"
 
-
 /***************************************************
                     SOMMET
 ****************************************************/
@@ -104,8 +103,8 @@ AreteInterface::AreteInterface(Sommet& depart, Sommet& arrive)
     // Le WidgetEdge de l'interface de l'arc
     if ( !(depart.m_interface && arrive.m_interface) )
     {
-        std::cerr << "Error creating EdgeInterface between vertices having no interface" << std::endl;
-        throw "Bad EdgeInterface instanciation";
+        std::cerr << "Error creating AreteInterface between vertices having no interface" << std::endl;
+        throw "Bad AreteInterface instanciation";
     }
     m_top_edge.attach_from(depart.m_interface->m_top_box);
     m_top_edge.attach_to(arrive.m_interface->m_top_box);
@@ -401,14 +400,21 @@ void Graphe::delete_sommet(int indice)
     m_sommets.erase(indice);
 }
 
+void Graphe::toolBarre()
+{
+    //rectfill
+}
+
 
 void Graphe::menu()
 {
+    //On initialise allegro et tout ses elements
     grman::init();
 
     /// Le nom du répertoire où se trouvent les images à charger
     grman::set_pictures_path("pics");
 
+    //Declaration des variables et BITMAP
     std::string name = "";
     int x = 270;
     int y = 170;
@@ -434,34 +440,38 @@ void Graphe::menu()
         textprintf_ex(buffer, font, x+ texte_x_espace, y + texte_y_espace + espace_y_case + espace_y_entre_case, makecol(255,255,255), -1, "Graphe 2");
         textprintf_ex(buffer, font, x+ texte_x_espace, y + texte_y_espace + (espace_y_case + espace_y_entre_case)*2, makecol(255,255,255), -1, "Graphe 3");
 
+        //Boucles pour savoir où l'utilisateur appuie et ainsi charger le graphe correspondant
         if(mouse_b&1)
         {
             if(mouse_x > x && mouse_x < x + espace_x)
             {
                 if(mouse_y > y && mouse_y < y + espace_y_case)
                 {
-                    name = "graph.txt";
+                    name = "graphe.txt";
                 }
 
                 if(mouse_y > y + 80 && mouse_y < y + 130)
                 {
-                    name = "graph2.txt";
+                    name = "graphe2.txt";
                 }
 
                 if(mouse_y > y + 160 && mouse_y < y + 210)
                 {
-                    name = "graph3.txt";
+                    name = "graphe3.txt";
                 }
             }
         }
-        blit(buffer, screen, 0, 0, 0, 0,  800, 600);
+        blit(buffer, screen, 0, 0, 0, 0,  SCREEN_W, SCREEN_H);
 
         //grman::mettre_a_jour();
         clear(buffer);
         rest(20);
     }
+    //On charge le fichier du graphe choisi
     LoadFile(name);
-
+    //On affiche tous les boutons nécessaire
+    ///toolBarre();
+    //On sauvegarde le graphe dans un autre fichier particulier à la sauvegarde
     SaveFile();
 
     while ( !key[KEY_ESC] )
@@ -473,5 +483,5 @@ void Graphe::menu()
         grman::mettre_a_jour();
     }
 
-
 }
+

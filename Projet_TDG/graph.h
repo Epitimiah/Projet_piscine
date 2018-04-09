@@ -367,7 +367,10 @@ class Graphe
         void delete_arete(int indice);
         //Fonction qui supprime les sommets
         void delete_sommet(int indice);
-        //Fonction qui permet de faire apparaitre un menu
+
+        //Fonction qui permet d'avoir des boutons à l'ecran pour les differentes fonctions telles que la suppression ou l'ajout
+        void toolBarre();
+        //Fonction qui permet de faire apparaitre un menu pour choisir entre les 3 grahes
         void menu();
 
         /// La méthode update à appeler dans la boucle de jeu pour les graphes avec interface
